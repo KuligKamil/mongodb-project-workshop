@@ -1,6 +1,4 @@
-## project setup
-
-In order to focus on the most exciting parts of the build, we have provided some code to get you started.
+## Project Setup
 
 1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
    
