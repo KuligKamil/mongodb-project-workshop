@@ -31,6 +31,7 @@ In order to focus on the most exciting parts of the build, we have provided some
 
   <details>
   <summary>how to use pdm</summary>
+
   install pdm 
 
   `pip install pdm`
@@ -50,10 +51,12 @@ In order to focus on the most exciting parts of the build, we have provided some
 
   or you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
+
+
   <details>
   <summary>how to use venv</summary>
 
-    create venv
+  create venv
 
   `python -m venv .`
 
@@ -67,11 +70,11 @@ In order to focus on the most exciting parts of the build, we have provided some
 
   * cmd.exe
 
-  `C:\> <venv>\Scripts\activate.bat`
+  `C:\> .\Scripts\activate.bat`
 
   * PowerShell
 
-  `PS C:\> <venv>\Scripts\Activate.ps1`
+  `PS C:\> .\Scripts\Activate.ps1`
 
   run ruff check
 
@@ -82,7 +85,7 @@ In order to focus on the most exciting parts of the build, we have provided some
   </details>
  
 
-4. Create file with environment variables `.envrc` file or `.env` file
+1. Create file with environment variables `.envrc` file or `.env` file
 
 <aside>
 💡 https://direnv.net/
