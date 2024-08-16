@@ -1,0 +1,42 @@
+[project]
+name = "MongoDB-Project-Workshop"
+version = "2.0.0"
+description = ""
+authors = [
+    {name = "KuligKamil", email = "kamil.marek.kulig@gmail.com"},
+    {name = "ABrzyzek", email = "brzyzekadam@gmail.com"},
+]
+dependencies = [
+    "pytest>=8.3.2",
+    "ruff>=0.6.1",
+    "pydantic>=2.8.2",
+    "beanie>=1.26.0",
+    "faker>=27.0.0",
+    "pytest-asyncio>=0.23.8",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "W191",  # indentation contains tabs
+    "E712", # for models TODO: ignore for only one file
+    "UP007", # issue with pydantic optioanl and pipe |
+]
