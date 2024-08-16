@@ -10,73 +10,75 @@ In order to focus on the most exciting parts of the build, we have provided some
 
   HINT: if you need to manage multiple versions of Python 
     
-  we recommend to use 
-    pyenv & pyenv virtualenv 
-    
-    [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
-    
-    [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+  we recommend to use  pyenv & pyenv virtualenv 
+  
+  [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+  
+  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
-    For example:
+  For example:
 
-    `pyenv install 3.11.9`
+  `pyenv install 3.11.9`
 
-    `pyenv virtualenv 3.11.9 mongo-project-workshop`
+  `pyenv virtualenv 3.11.9 mongo-project-workshop`
 
-    `pyenv local 3.11.9`
+  `pyenv local 3.11.9`
 
 
-4. Install version of python and setup environemnt. 
+4. Install version of python and setup environment. 
 
   HINT: we recommend to use PDM - Python package and dependency manager  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
 
   <details>
   <summary>how to use pdm</summary>
-    install pdm 
+  install pdm 
 
-    `pip install pdm`
+  `pip install pdm`
 
-    install all dependencies
+  install all dependencies
 
-    `pdm install`
+  `pdm install`
 
-    run ruff check 
+  run ruff check 
 
-    `pdm run ruff check` 
+  `pdm run ruff check` 
 
-    if you see `All checks passed!` everything setup correctly 
+  if you see `All checks passed!` everything setup correctly 
+
   </details>
     
 
   or you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
   <details>
-  <summary>how to use pdm</summary>
-     create venv
+  <summary>how to use venv</summary>
 
-    `python -m venv .`
+    create venv
 
-    next activate it
+  `python -m venv .`
 
-    on mac, linux or WSL
+  next activate it
 
-    `source ./bin/activate`
+  on mac, linux or WSL
 
-    or on windows 
+  `source ./bin/activate`
 
-    * cmd.exe
+  or on windows 
 
-    `C:\> <venv>\Scripts\activate.bat`
+  * cmd.exe
 
-    * PowerShell
+  `C:\> <venv>\Scripts\activate.bat`
 
-    `PS C:\> <venv>\Scripts\Activate.ps1`
+  * PowerShell
 
-    run ruff check
+  `PS C:\> <venv>\Scripts\Activate.ps1`
 
-    `run ruff check`
+  run ruff check
 
-    if you see `All checks passed!` everything setup correctly 
+  `run ruff check`
+
+  if you see `All checks passed!` everything setup correctly 
+
   </details>
  
 
@@ -94,4 +96,4 @@ In order to focus on the most exciting parts of the build, we have provided some
 2. Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
 
-## That’s it! You’re ready to work! 🎉
+### That’s it! You’re ready to work! 🎉
