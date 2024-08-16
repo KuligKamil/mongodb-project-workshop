@@ -17,10 +17,10 @@ We always use Relational Databases. Mostly PostgreSQL.
 
 We want to try something new.
 
-"The best option to learn something is to create workshop." Kamilho Kuelho
 
 ### MongoDB Popularity
 
+For showing popularity MongoDB we will show two source StackOverflow 2024 Survey Developer, DB-Engines Ranking.
 
 * StackOverflow 2024 Survey Developer - Database Results
 
@@ -63,4 +63,5 @@ From [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ra
 
 ### Summary
 
-Summary is MongoDB is the most popular database that as not Relational Database. 
+"The best option to learn something new is to create workshop. You have perfect motivation, deadline." Kamil Kulig
+MongoDB is the most popular database that as not Relational Database. 
