@@ -12,5 +12,3 @@
 ![image](./assets/6-Atlas.png)
 6. Now create a user for your database.
 ![image](./assets/7-Atlas.png)
-7. In the left settings bar, go to Network Access and check if your IP address has been added successfully. You should see a green dot in the status column. If your IP address is not added, you will not be able to connect to the database from your device.
-![image](./assets/8-Atlas.png)
