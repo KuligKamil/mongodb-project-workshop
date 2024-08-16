@@ -8,6 +8,7 @@ In order to focus on the most exciting parts of the build, we have provided some
 
 3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
 
+<aside>
   HINT: if you need to manage multiple versions of Python 
     
   we recommend to use  pyenv & pyenv virtualenv 
@@ -24,6 +25,7 @@ In order to focus on the most exciting parts of the build, we have provided some
 
   `pyenv local 3.11.9`
 
+</aside> 
 
 4. Install version of python and setup environment. 
 
