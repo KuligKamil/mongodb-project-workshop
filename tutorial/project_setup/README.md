@@ -6,52 +6,53 @@
 
 3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
 
-<aside>
-  HINT: if you need to manage multiple versions of Python 
+  <aside>
+    HINT: if you need to manage multiple versions of Python 
+      
+    we recommend to use  pyenv & pyenv virtualenv 
     
-  we recommend to use  pyenv & pyenv virtualenv 
-  
-  [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
-  
-  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+    [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+    
+    [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
-  For example:
+    For example:
 
-  `pyenv install 3.11.9`
+    `pyenv install 3.11.9`
 
-  `pyenv virtualenv 3.11.9 mongo-project-workshop`
+    `pyenv virtualenv 3.11.9 mongo-project-workshop`
 
-  `pyenv local 3.11.9`
+    `pyenv local 3.11.9`
 
-</aside> 
+  </aside> 
 
 4. Install version of python and setup environment. 
+  
+  <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+    HINT: we recommend to use PDM - Python package and dependency manager  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
 
-  <details>
-  <summary>how to use pdm</summary>
+    <details>
+    <summary>how to use pdm</summary>
 
-  install pdm 
+    install pdm 
 
-  `pip install pdm`
+    `pip install pdm`
 
-  install all dependencies
+    install all dependencies
 
-  `pdm install`
+    `pdm install`
 
-  run ruff check 
+    run ruff check 
 
-  `pdm run ruff check` 
+    `pdm run ruff check` 
 
-  if you see `All checks passed!` everything setup correctly 
+    if you see `All checks passed!` everything setup correctly 
 
-  </details>
-    
+    </details>
+  </aside>
 
-  or you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
+ you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
-
 
   <details>
   <summary>how to use venv</summary>
@@ -85,7 +86,7 @@
   </details>
  
 
-1. Create file with environment variables `.envrc` file or `.env` file
+5. Create file with environment variables `.envrc` file or `.env` file
 
 <aside>
 💡 https://direnv.net/
@@ -95,8 +96,8 @@
 - Load secrets for deployment
 </aside>
 
-1. Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
-2. Set the `PYTHONPATH` variable in `.envrc` to your project path
+* Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
+* Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
 
 ### That’s it! You’re ready to work! 🎉
