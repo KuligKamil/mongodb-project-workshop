@@ -24,7 +24,7 @@ async def main():
         In(User.id, users.inserted_ids),
     ).to_list()
 
-    tasks = list(task_generator(fake=fake, users=users, nuber_of_tasks_for_user=10))
+    tasks = list(task_generator(fake=fake, users=users, number_of_tasks_for_user=10))
     tasks = await Task.insert_many(tasks)
     tasks = await Task.find_many(
         In(Task.id, tasks.inserted_ids),
@@ -33,10 +33,10 @@ async def main():
 
 
 def task_generator(
-    fake: FakerGenerator, users: list[User], nuber_of_tasks_for_user: int
+    fake: FakerGenerator, users: list[User], number_of_tasks_for_user: int
 ) -> Generator[Task]:
     for user in users:
-        for _ in range(nuber_of_tasks_for_user):
+        for _ in range(number_of_tasks_for_user):
             create_date = user.create_date + fake.time_delta(
                 end_datetime=date(2026, 1, 1)
             )
@@ -81,10 +81,9 @@ async def user_update_recent_tasks(users: list[User], number_of_tasks: int):
             .sort()
             .to_list(number_of_tasks)
         )
-        print(user, tasks)
         user.recently_tasks = tasks
-        responce = await user.save()
-    print(responce)
+        await user.save()
 
 
-run(main())
+if __name__ == "__main__":
+    run(main())
