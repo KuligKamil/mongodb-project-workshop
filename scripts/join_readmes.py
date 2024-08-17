@@ -1,6 +1,6 @@
 import os
+import shutil
 
-# TODO: move assets files from tutorial directory to main directory folder assets
 order = (
     "basic_readme",
     "introduction",
@@ -8,10 +8,10 @@ order = (
     "python_mongodb_tools",
     "project_setup",
     "mongodb_atlas",
-    "connection_to_db",
     "data_structure",
-    "crud_queries",
+    "connection_to_db",
     "data_generators",
+    "crud_queries",
     "tests",
     "resources",
 )
@@ -28,3 +28,18 @@ for index, tutorial_chapter in enumerate(order):
         temp_text = f.read()
     with open(f"{project_directory}/README.md", "a") as f:
         f.write(f"{ new_line * 2 if index > 0 else ''}{temp_text}")
+
+
+project_directory = os.getcwd()
+for root, _, files in os.walk(f"{project_directory}/assets"):
+    for file in files:
+        os.remove(os.path.join(root, file))
+for root, directories, f in os.walk(f"{project_directory}/tutorial"):
+    for file in f:
+        print(root, directories, f, file)
+        directory = root.split("/")[-1]
+        if directory == "assets":
+            shutil.copyfile(
+                os.path.join(root, file),
+                os.path.join(f"{project_directory}/assets/{file}"),
+            )
