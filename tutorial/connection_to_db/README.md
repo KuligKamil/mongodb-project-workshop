@@ -9,9 +9,9 @@
 ![image](./assets/11-Atlas.png)
 4. Create a new variable in the `.envrc` file in your project. Remember to replace the password placeholder with your database user's password in the connection string. `export MONGODB_URI="your_connection_string"`
 5. Install plugin for mongodb on youd IDE.
-    * PyCharm - [tutorial](https://www.jetbrains.com/help/pycharm/mongodb.html#general_tab)
+    * PyCharm - *[tutorial](https://www.jetbrains.com/help/pycharm/mongodb.html#general_tab)*
 
-    * Visual studio code - [tutorial](https://code.visualstudio.com/docs/azure/mongodb)
+    * Visual studio code - *[tutorial](https://code.visualstudio.com/docs/azure/mongodb)*
 6. Connect to your database from python using beanie framework. 
 To initilaize **Beanie** requiere:
     * Motor as an async database engine.
