@@ -1,8 +1,18 @@
+from datetime import datetime
 from enum import Enum, IntEnum
-from typing import Optional
+from typing import ClassVar, ForwardRef, Optional
 
-from beanie import Document
+from beanie import Document, Link
 from pydantic import BaseModel
+
+
+class Date(BaseModel):
+    create_date: datetime = datetime.now()
+    update_date: datetime = datetime.now()
+
+
+class Active(BaseModel):
+    active: bool = True
 
 
 class PriorityType(IntEnum):
@@ -11,36 +21,49 @@ class PriorityType(IntEnum):
     urgent = 3
 
 
-# class Priority(BaseModel):
-#     name: PriorityType
-
-
 class SizeType(IntEnum):
     S = 1
     M = 2
     L = 3
 
 
-# class Size(BaseModel):
-#     value: SizeType
+class StatusType(IntEnum):
+    BACKLOG = 1
+    TODO = 2
+    InProgress = 3
+    OnHold = 4
+    Review = 5
+    Done = 6
 
 
-class Task(Document):
+User = ForwardRef("User")
+
+
+# https://beanie-odm.dev/tutorial/multi-model-pattern/
+# class TaskBase(Date):
+#     priority: Optional[PriorityType] = None
+#     size: Optional[SizeType] = None
+#     status: StatusType = StatusType.BACKLOG
+
+
+class Task(Document, Date, Active):
     name: str
     description: Optional[str] = None
     priority: Optional[PriorityType] = None
     size: Optional[SizeType] = None
+    status: StatusType = StatusType.BACKLOG
+    user: Link[User]
 
 
 class Address(BaseModel):
     country: str
     city: str
     street: str
-    building_number: int
-    post_code: str
+    building_number: str
+    zip_code: str
 
 
-class User(Document):
+class User(Document, Date, Active):
     name: str
     surname: str
     email: str
@@ -48,20 +71,14 @@ class User(Document):
     recently_tasks: Optional[list[Task]] = []
 
 
-# add option from settings
-# in beanie
-# https://beanie-odm.dev/tutorial/defining-a-document/
-# Settings
-# The inner class Settings is used to configure:
-# MongoDB collection name
-# Indexes
-# Encoders
-# Use of revision_id
-# Use of cache
-# Use of state management
-# Validation on save
-# Configure if nulls should be saved to the database
-# Configure nesting depth for linked documents on the fetch operation
-
-
-# tips about configuration
+class TaskLogStatus(Document, Date):
+    priority: Optional[PriorityType] = None
+    size: Optional[SizeType] = None
+    status: StatusType = StatusType.BACKLOG
+    date: datetime = datetime.now()
+    task: Link[Task]
+    user: Link[User]
+    # last_status: StatusType = StatusType.BACKLOG
+    # new_status: StatusType = StatusType.BACKLOG
+    # start_date: datetime = datetime.now()
+    # end_date: datetime = datetime.now()
