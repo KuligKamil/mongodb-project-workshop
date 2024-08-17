@@ -18,6 +18,8 @@ To initilaize **Beanie** requiere:
     * List of your document models.
 
 ```python 
+from beanie import init_beanie
+from motor.motor_asyncio import AsyncIOMotorClient
 from config import CONNECTION_STRING
 from src.models import User
 
