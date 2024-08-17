@@ -2,7 +2,8 @@ import os
 
 from beanie import init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
-from src.models import Task, User
+
+from models import Task, User
 
 
 async def database_init():
@@ -12,3 +13,4 @@ async def database_init():
         document_models=[Task, User],
         multiprocessing_mode=True,
     )
+    # client.drop_database(name_or_database=client.workshop)
