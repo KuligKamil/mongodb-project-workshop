@@ -12,5 +12,25 @@
     * PyCharm - [tutorial](https://www.jetbrains.com/help/pycharm/mongodb.html#general_tab)
 
     * Visual studio code - [tutorial](https://code.visualstudio.com/docs/azure/mongodb)
-6. Connect to your database from python using beanie framework.
+6. Connect to your database from python using beanie framework. 
+To initilaize **Beanie** requiere:
+    * Motor as an async database engine.
+    * List of your document models.
 
+```python 
+from config import CONNECTION_STRING
+from src.models import User
+
+async def init():
+    # Create Motor client
+    client = AsyncIOMotorClient(CONNECTION_STRING)
+ 
+    # Initialize beanie with the Sample document class and a database
+    await init_beanie(database=client.workshop, document_models=[User])
+```
+Function **`init_beanie`** also supports the parameters named:
+* `allow_index_dropping: bool = False` - If you manage the indexes by yourself, when the parameter is set to`True`, indexes will be dropped.
+* `recreate_views: bool = False` - If you want to use virtual views this parameter should be set to `True` *(aggregation pipelines stored in MongoDB that act as collections for reading operations)*.
+* `multiprocessing_mode: bool = False` - If multiprocessing mode is set to `True` it will patch the motor client to use process's event loop.
+
+*[Documentation for beanie initialization.](https://beanie-odm.dev/tutorial/initialization/)*
