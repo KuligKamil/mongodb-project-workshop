@@ -1,8 +1,8 @@
 # Data genertors
-To fill our database with data we need to generate dummy data. For that purpose i suggest to use [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
+To fill our database with data we need to generate dummy data. For that purpose has been useds used [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
 List of Standard Providers you can find [here](https://faker.readthedocs.io/en/master/providers.html).
 
-1. **Creation and initialization** of a Faker - dummy data generator. Below you can see the code for the init faker. I added the locale argument to return localized data from Poland. I also set the seed value to 2137, it will be helpful to compare the results of our queries later in the workshop.
+1. **Creation and initialization** of a Faker - dummy data generator. Below you can see the code for the init faker. Has been added the locale argument to return localized data from Poland. Seed value has been set to 2137, it will be helpful to compare the results of our queries later in the workshop.
 
 ```python
 from faker.factory import Factory
@@ -11,7 +11,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Ex. 1*** - *Create a generator that will return the number of User objects determined in advance.*
+***Ex. 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fileds are missing.*
 
 ```python
 from collections.abc import Generator
@@ -23,7 +23,23 @@ from models import Address, PriorityType, SizeType, StatusType, Task, User
 
 
 def user_generator(fake: FakerGenerator, number_of_iterations: int) -> Generator[User]:
-    pass
+    for _ in range(number_of_iterations):
+    address = Address()
+    creation_date = fake.date_time_this_year(before_now=True, after_now=False)
+    yield User(
+        create_date=creation_date,
+        update_date=creation_date,
+        active=fake.pybool(truth_probability=90),
+        name=fake.first_name(),
+        surname=fake.last_name(),
+        email=fake.ascii_email(),
+        address=address
+    )
+
+
+fake = Factory.create(locale="pl_PL")
+fake.seed(2137)
+print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
 <details><summary><b><i>Solution to Ex. 1</i></b></summary>
@@ -40,7 +56,7 @@ from models import Address, PriorityType, SizeType, StatusType, Task, User
 def user_generator(fake: FakerGenerator, number_of_iterations: int) -> Generator[User]:
     for _ in range(number_of_iterations):
         address = Address(
-            country=fake.country(),
+            country="Poland",
             city=fake.city(),
             street=fake.street_name(),
             building_number=fake.building_number(),
@@ -56,6 +72,11 @@ def user_generator(fake: FakerGenerator, number_of_iterations: int) -> Generator
             email=fake.ascii_email(),
             address=address
         )
+
+
+fake = Factory.create(locale="pl_PL")
+fake.seed(2137)
+print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
 </details>
