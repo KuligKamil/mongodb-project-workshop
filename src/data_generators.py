@@ -2,11 +2,11 @@ from asyncio import run
 from collections.abc import Generator
 from datetime import date
 
-import pymongo
 from beanie import PydanticObjectId
 from beanie.operators import In
 from faker.factory import Factory
 from faker.generator import Generator as FakerGenerator
+from pymongo import DESCENDING
 
 from database_connection import database_init
 from models import Address, PriorityType, SizeType, StatusType, Task, User
@@ -14,8 +14,7 @@ from models import Address, PriorityType, SizeType, StatusType, Task, User
 
 async def main():
     await database_init()
-    Faker = Factory.create
-    fake = Faker(locale="pl_PL")
+    fake = Factory.create(locale="pl_PL")
     fake.seed(2137)
     number_of_iterations = 50
 
@@ -79,7 +78,7 @@ async def user_update_recent_tasks(users: list[User], number_of_tasks: int):
     for user in users:
         tasks = (
             await Task.find_many(Task.user.id == PydanticObjectId(user.id))
-            .sort((Task.create_date, pymongo.DESCENDING))
+            .sort((Task.create_date, DESCENDING))
             .to_list(number_of_tasks)
         )
         user.recently_tasks = tasks
