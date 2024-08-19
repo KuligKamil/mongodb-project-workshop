@@ -19,9 +19,9 @@
 
   `pyenv install 3.11.9`
 
-  `pyenv virtualenv 3.11.9 mongo-project-workshop`
+  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
 
-  `pyenv local 3.11.9`
+  `pyenv local mongo-project-workshop-3.11.9`
 
 </aside> 
 
