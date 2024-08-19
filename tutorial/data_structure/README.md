@@ -13,7 +13,7 @@ Picture from mongodb.com
 
 MongoDB stores data records as documents (specifically BSON documents) which are gathered together in collections.
 
-![JSON vs BSON](assets/json vs bson.png)
+![JSON vs BSON](assets/jsonvsbson.png)
 JSON 
 https://www.mongodb.com/resources/basics/json-and-bson
 
@@ -21,7 +21,7 @@ BSON specification
 https://bsonspec.org/
 
 Today, JSON shows up in many different cases:
-
+ 
 APIs
 Configuration files
 Log messages
@@ -37,6 +37,12 @@ JSON does not provide metadata and type information, taking longer to retrieve d
 
 To make MongoDB JSON-first but still high-performance and general purpose, BSON was invented to bridge the gap: a binary representation to store data as JSON documents, optimized for speed, space, and efficiency. It's not dissimilar from other binary interchange formats like Protocol Buffers, or Thrift, in terms of approach.
 
+* security not readable for people - we have tool for read it
+* faster
+* smaller
+* contain more information
+
+* ids in mongodb 
 
 # add option from settings
 # in beanie
@@ -58,3 +64,32 @@ To make MongoDB JSON-first but still high-performance and general purpose, BSON 
 
 
 <!-- https://www.mongodb.com/docs/manual/introduction/ -->
+
+
+evert body use pydantic? 
+  every dataclass
+
+ex 0 
+User Document
+add it
+retrive it
+
+
+ex 2
+Date & Active
+add to models
+User Adress - Embeded
+
+ex 3 
+Task Document
+add tasks
+retrive it
+Link
+retrive user with task
+
+ex3 
+TasK log Status
+
+
+
+first document
