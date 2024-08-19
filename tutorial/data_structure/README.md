@@ -22,10 +22,10 @@ https://bsonspec.org/
 
 Today, JSON shows up in many different cases:
  
-APIs
-Configuration files
-Log messages
-Database storage
+* APIs
+* Configuration files
+* Log messages
+* Database storage
 
 However, there are several issues that make JSON less than ideal for usage inside of a database.
 
@@ -69,6 +69,12 @@ To make MongoDB JSON-first but still high-performance and general purpose, BSON 
 evert body use pydantic? 
   every dataclass
 
+
+for example we want to create app 
+app for whom? 
+for user and it will be our first class
+
+class User(pydantic)
 ex 0 
 User Document
 add it
@@ -78,7 +84,7 @@ retrive it
 ex 2
 Date & Active
 add to models
-User Adress - Embeded
+User Address - Embeded
 
 ex 3 
 Task Document
