@@ -17,7 +17,7 @@ class Active(BaseModel):
 
 class PriorityType(IntEnum):
     low = 1
-    middle = 2
+    normal = 2
     urgent = 3
 
 
