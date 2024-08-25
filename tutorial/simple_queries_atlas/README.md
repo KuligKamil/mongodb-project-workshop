@@ -27,3 +27,38 @@ Embedded Field: `{ "field.embedded_field": value }`
 Exists: `{ field: { $exists: boolean } }`
 Type: `{ field: { $type: BSON type } }`
 Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON typeN ] } }`
+
+
+***Ex.*** - *Let's create some queries in MongoDb Altas*
+
+1. 
+
+<details><summary><b><i>Solution to Ex. 1</i></b></summary>
+
+1. 
+```JavaScript
+{active: true, create_date: {$gt: ISODate("2024-07-18")}}
+```
+
+2. 
+```JavaScript
+{"address.city": "Warszawa"}
+```
+
+3. 
+```JavaScript
+{"name": {$in: ["Krzysztof", "Nicole"]}}
+```
+
+4. 
+```JavaScript
+{$or: [{priority: 1}, {status: 5}]}
+```
+
+5. 
+3. 
+```JavaScript
+
+```
+
+</details>
