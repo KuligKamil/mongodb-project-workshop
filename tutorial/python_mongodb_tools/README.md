@@ -15,7 +15,7 @@ We found 4 potential candidates to use them.
 * beanie [https://github.com/BeanieODM/beanie](https://github.com/BeanieODM/beanie)
 
 
-### star history comparison with [https://star-history.com/blog/how-to-use-github-star-history](https://star-history.com/blog/how-to-use-github-star-history)
+### Star history comparison with [https://star-history.com/blog/how-to-use-github-star-history](https://star-history.com/blog/how-to-use-github-star-history)
 
 
 ![star history](assets/star-history.png)
