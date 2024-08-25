@@ -42,32 +42,12 @@ To make MongoDB JSON-first but still high-performance and general purpose, BSON 
 * smaller
 * contain more information
 
-* ids in mongodb 
 
-# add option from settings
-# in beanie
-# https://beanie-odm.dev/tutorial/defining-a-document/
-# Settings
-# The inner class Settings is used to configure:
-# MongoDB collection name
-# Indexes
-# Encoders
-# Use of revision_id
-# Use of cache
-# Use of state management
-# Validation on save
-# Configure if nulls should be saved to the database
-# Configure nesting depth for linked documents on the fetch operation
-
-
-# tips about configuration
-
-
-<!-- https://www.mongodb.com/docs/manual/introduction/ -->
 
 ## pydantic + beanie = ❤️
 
-the basic class in Beanie is Document class to create collections of Document
+To create Document in Collections we need to use the basic class in Beanie 
+The basic class in Beanie is Document class to create collections of Document
 
 After inspect of the Beanie base class Document
 we can see it's inherent from pydantic Base Model 
@@ -128,8 +108,10 @@ class User(Document):
 ```
 
 
-if you run code above, you will see error message 'CollectionWasNotInitialized'
-To Initialized collection need to use init_beanie function
+if you run code above, you will see error message 'CollectionWasNotInitialized'.
+To Initialized collection need to use init_beanie function.
+
+#
 
 ```python 
 import os
@@ -184,9 +166,10 @@ value non id mean that we didn't insert to database yet.
 to insert OUR Adam to database we need to use one of 5 options
 
 * **insert** - basic method to insert Document
-* create, insert_one - synonyms for insert 
-* insert_many - to insert one or more Documents
+* **insert_many** - to insert one or more Documents
 * **save** - insert, update current object of class Document to database
+* create, insert_one - synonyms for insert 
+
 
 Remember from each use await key word otherwise you will return couritne object & you will not insert object.
 
@@ -254,17 +237,43 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
 * add one user & task
 
-### Exercise 2 - create Embeded Document
+Solution
+
+Embedded Document Example
+
+
+### Exercise 2 - create Embedded Document
 * add to User Document recently task added by user
 * hints use save
 
+
+Solution
+
+clear database
+Active Example
+
+
+
 ### Exercise 3 - extend Document
 * add extend tables with technical tables like active, create_data & update_data
+
+Solution
+
+clear database
+link Task example
+
 
 ### Exercise 4 - link to other Document
 * create document TaskLogStatus for log task status, 
   needs to have priority, size, status, date, link to user and task
 
+Solution
+
+update, delete example
+
+### Exercise 5 - update, delete
+
+Solution
   
 ## important mentions 
 * This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:
@@ -286,3 +295,27 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 ```
 
 * settings
+# add option from settings
+# https://beanie-odm.dev/tutorial/defining-a-document/
+# Settings
+# The inner class Settings is used to configure:
+# MongoDB collection name
+# Indexes
+# Encoders
+# Use of revision_id
+# Use of cache
+# Use of state management
+# Validation on save
+# Configure if nulls should be saved to the database
+# Configure nesting depth for linked documents on the fetch operation
+
+
+# tips about configuration
+
+* ids in mongodb 
+
+
+
+
+
+<!-- https://www.mongodb.com/docs/manual/introduction/ -->
