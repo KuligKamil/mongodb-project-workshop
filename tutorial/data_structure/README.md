@@ -103,6 +103,7 @@ we want to create for users
 
 that why our first class will be user
 
+Example in User class in pydantic
 
 ```python 
 from pydantic import BaseModel
@@ -112,6 +113,12 @@ class User(BaseModel):
     name: str
     surname: str
     email: str
+```
+
+Example in User class in beanie
+
+```python
+from beanie import Document
 
 
 class User(Document):
@@ -122,18 +129,19 @@ class User(Document):
 
 
 if you run code above, you will see error message 'CollectionWasNotInitialized'
+To Initialized collection need to use init_beanie function
 
 ```python 
+import os
+
+from beanie import Document, init_beanie
+from motor.motor_asyncio import AsyncIOMotorClient
+
 class User(Document):
     name: str
     surname: str
     email: str
 
-
-import os
-
-from beanie import init_beanie
-from motor.motor_asyncio import AsyncIOMotorClient
 
 
 client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
@@ -142,12 +150,12 @@ await init_beanie(
     document_models=[User],
     multiprocessing_mode=True,
 )
-client.drop_database(name_or_database=client.workshop)
+
 ```
 
-Okey but we don't have user.
+Okey, but we don't have user.
 
-We use will use inheritience Document class same as BaseModel class.
+We use will use inheritance Document class same as BaseModel class.
 
 ```python
 hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
@@ -155,10 +163,13 @@ hot_adam
 
 # User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
 ```
+We can see two additional attributes. 'id' and 'revision_id'.
 
-```python
+TODO: explain it
 
-```
+we can use Base Model methods
+
+
 ```python
 hot_adam.model_dump()
 
@@ -168,32 +179,110 @@ hot_adam.model_dump()
  'email': 'hotadam@gmail.com'}
 ```
 
+value non id mean that we didn't insert to database yet.
 
-if we check we didn't insert OUR Adam to database.
-TO do it we need to use one of 5 options
+to insert OUR Adam to database we need to use one of 5 options
 
-insert data
-* insert
-* create 
-* insert_one
-* insert_many
-* save
+* **insert** - basic method to insert Document
+* create, insert_one - synonyms for insert 
+* insert_many - to insert one or more Documents
+* **save** - insert, update current object of class Document to database
+
+Remember from each use await key word otherwise you will return couritne object & you will not insert object.
+
+```python
+hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
 
 
-<!-- Remember to use await -->
+# User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
+```
+
+```python
+await hot_adam.save()
+```
+
+```python
+await User.save(hot_adam)
+```
 
 
-### Exercise 1
+```python
+await hot_adam.insert()
+```
 
+```python
+await User.insert(hot_adam)
+```
+
+```python
+hot_adam.model_dump()
+
+{'id': '66cb3c4631b062a669d4357c',
+ 'name': 'Adam',
+ 'surname': 'Brzyzek',
+ 'email': 'nothotadam@gmail.com'}
+```
+
+
+now to get data
+* **find** - basic function to get 
+  * **to_list**
+  * **first_or_none**
+  
+* get - get document with id, without filtering
+* find_one - get one document with fitlering
+* find_all - synonyms to find({})
+
+get all users in database
+
+```python
+users = await User.find().to_list()
+```
+
+get all users in database
+```python
+result = await User.find().project(BaseInformation).first_or_none()
+```
+
+filters Adams
+
+```python
+adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
+```
+
+### Exercise 1 - create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
-* add to User Document recently task added by user  
 * add one user & task
 
+### Exercise 2 - create Embeded Document
+* add to User Document recently task added by user
+* hints use save
 
-### Exercise 2
-
+### Exercise 3 - extend Document
 * add extend tables with technical tables like active, create_data & update_data
+
+### Exercise 4 - link to other Document
 * create document TaskLogStatus for log task status, 
   needs to have priority, size, status, date, link to user and task
 
   
+## important mentions 
+* This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:
+
+```python
+async for result in User.find():
+    print(result)
+```
+* When only a part of a document is required, projections can save a lot of database bandwidth and processing. 
+  For simple projections we can just define a pydantic model with the required fields and pass it to project() method
+
+```python
+class UserBasicInfo(BaseModel):
+    name: str
+    surname: str
+
+
+adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
+```
+
+* settings
