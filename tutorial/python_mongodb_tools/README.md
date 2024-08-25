@@ -17,19 +17,15 @@ We found 4 potential candidates to use them.
 
 ### star history comparison with [https://star-history.com/blog/how-to-use-github-star-history](https://star-history.com/blog/how-to-use-github-star-history)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=BeanieODM/beanie,mongodb/mongo-python-driver,mongodb/motor,MongoEngine/mongoengine&type=Date)](https://star-history.com/#BeanieODM/beanie&mongodb/mongo-python-driver&mongodb/motor&MongoEngine/mongoengine&Date)
-
 
 ![star history](assets/star-history.png)
-
-[https://mongoengine-odm.readthedocs.io/faq.html?highlight=async](https://mongoengine-odm.readthedocs.io/faq.html?highlight=async)
 
 
 PyMongo and Motor are Python drivers.
 
 MongoEngine and Beanie are ODMs.
 
-Document-Object Mapper (think ORM, but for document databases).
+Document-Object Mapper (think ORM Object–Relational Mapping, but for document databases).
 
 PyMongo and MongoEngine out - no asynchronous support from PyMongo or MongoEngine.
 
@@ -43,9 +39,6 @@ Pydantic for the win.
 
 Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
-[https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code](https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code)
-[https://github.com/search?q=repo%3Amongodb%2Fmotor%20pymongo&type=code](https://github.com/search?q=repo%3Amongodb%2Fmotor%20pymongo&type=code)
-
 ![beanie dependency](assets/beanie-dependency.png)
 
 
@@ -54,3 +47,15 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 The MongoDB Shell, mongosh, is a JavaScript and Node.js REPL environment for interacting with MongoDB deployments in Atlas  , locally, or on another remote host. Use the MongoDB Shell to test queries and interact with the data in your MongoDB database.
 
 If you would like more native approach in MongoDB
+
+
+## Reference
+* Does MongoEngine support asynchronous drivers (Motor, TxMongo)? [https://mongoengine-odm.readthedocs.io/faq.html?highlight=async](https://mongoengine-odm.readthedocs.io/faq.html?highlight=async)
+
+* Showing wrapping of beanie motor [https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code](https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code)
+  
+* Showing wrapping of motor pymongo
+[https://github.com/search?q=repo%3Amongodb%2Fmotor%20pymongo&type=code](https://github.com/search?q=repo%3Amongodb%2Fmotor%20pymongo&type=code)
+
+
+* Link for generate star history graph <!-- [![Star History Chart](https://api.star-history.com/svg?repos=BeanieODM/beanie,mongodb/mongo-python-driver,mongodb/motor,MongoEngine/mongoengine&type=Date)](https://star-history.com/#BeanieODM/beanie&mongodb/mongo-python-driver&mongodb/motor&MongoEngine/mongoengine&Date) -->
