@@ -414,6 +414,12 @@ await toxic_workshop_instructor.delete()
 Come on. Don't cheat XD
 </details>
   
+### Exercise 5 - create crud for User, Task & TaskLogStatus
+
+<details><summary><b><i>Solution</i></b></summary>
+Come on. Again?! XD
+</details>
+
 ## important mentions 
 * This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:
 
@@ -421,6 +427,7 @@ Come on. Don't cheat XD
 async for result in User.find():
     print(result)
 ```
+
 * When only a part of a document is required, projections can save a lot of database bandwidth and processing. 
   For simple projections we can just define a pydantic model with the required fields and pass it to project() method
 
@@ -434,14 +441,12 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 ```
 
 * settings
-# add option from settings
-# https://beanie-odm.dev/tutorial/defining-a-document/
+    add option from settings [https://beanie-odm.dev/tutorial/defining-a-document/](https://beanie-odm.dev/tutorial/defining-a-document/)
+    
 
-we recommend to try interactive tutorial prepared at official website mongodb.com
-<!-- https://www.mongodb.com/docs/manual/tutorial/getting-started/ -->
+* we recommend to try interactive tutorial prepared at official website mongodb.com [https://www.mongodb.com/docs/manual/tutorial/getting-started/](https://www.mongodb.com/docs/manual/tutorial/getting-started/ )
 
 
 Good to check setting parameter is_root = True
 [https://beanie-odm.dev/tutorial/inheritance/](https://beanie-odm.dev/tutorial/inheritance/)
 
-<!-- https://www.mongodb.com/docs/manual/introduction/ -->
