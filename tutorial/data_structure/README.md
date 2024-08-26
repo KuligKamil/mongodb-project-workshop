@@ -373,12 +373,45 @@ class TaskLogStatus(Document, Date):
 
 </details>
 
-update, delete example
+updating & deleting 
+documentation: [https://beanie-odm.dev/tutorial/updating-%26-deleting/](https://beanie-odm.dev/tutorial/updating-%26-deleting/)
+
+for update we have couple options
+* save
+* replace -  throws: - a ValueError if the document does not have an id yet, or - a beanie.exceptions.DocumentNotFound
+* update, set, inc - can be performed on the result of a find or find_one query, or on a document that was returned from an earlier query.
+* set
+* upsert - to insert a document when no documents are matched against the search criteri
+
+```python
+user = await User.find(User.name == "Adam").first_or_none()
+user = await user.set({User.name: "John"})
+user.model_dump()
+```
+
+result 
+
+```python
+{'id': '66cbc95d9721746de2ec9ee6',
+ 'name': 'John',
+ 'surname': 'Brzyzek',
+ 'email': 'hotbrzyzek@gmail.com'}
+```
+
+to delete use method delete() XD
+
+```python
+toxic_workshop_instructor = await User.find_one(User.name == "Kamil")
+await toxic_workshop_instructor.delete()
+```
 
 ### Exercise 4 - update, delete
 
-<details><summary><b><i>Solution</i></b></summary>
+* Update task and user with 2 different method.
+* Delete something or somebody. Do it 
 
+<details><summary><b><i>Solution</i></b></summary>
+Come on. Don't cheat XD
 </details>
   
 ## important mentions 
