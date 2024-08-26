@@ -12,6 +12,7 @@ order = (
     "connection_to_db",
     "data_structure",
     "data_generators",
+    "simple_queries_atlas",
     "crud_queries",
     "tests",
     "resources",

@@ -912,7 +912,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Ex. 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fileds are missing.*
+***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fileds are missing.*
 
 ```python
 from collections.abc import Generator
@@ -943,7 +943,7 @@ fake.seed(2137)
 print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
-<details><summary><b><i>Solution to Ex. 1</i></b></summary>
+<details><summary><b><i>Solution to Exercise 1</i></b></summary>
 
 ```python
 from collections.abc import Generator
@@ -982,7 +982,7 @@ print(list(user_generator(fake=fake, number_of_iterations=10)))
 
 </details>
 
-***Ex. 2*** - *Using created generator in ex. 1 create async main function that will generate 50 users and save them to your database.*
+***Exercise 2*** - *Using created generator in exercise 1 create async main function that will generate 50 users and save them to your database.*
 
 ```python
 from asyncio import run
@@ -997,7 +997,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Ex. 2</i></b></summary>
+<details><summary><b><i>Solution to Exercise 2</i></b></summary>
 
 ```python
 from asyncio import run
@@ -1021,7 +1021,7 @@ run(main())
 </details>
 
 
-***Ex. 3*** - *Create a generator that will return the number of Tasks for each User.*
+***Exercise 3*** - *Create a generator that will return the number of Tasks for each User.*
 
 ```python
 def task_generator(
@@ -1031,7 +1031,7 @@ def task_generator(
 ```
 
 
-<details><summary><b><i>Solution to Ex. 3</i></b></summary>
+<details><summary><b><i>Solution to Exercise 3</i></b></summary>
 
 ```python
 from datetime import date
@@ -1060,7 +1060,7 @@ def task_generator(
 
 </details>
 
-***Ex. 4*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
+***Exercise 4*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
 
 ```python
 from beanie.operators import In
@@ -1074,7 +1074,7 @@ run(main())
 ```
 
 
-<details><summary><b><i>Solution to Ex. 4</i></b></summary>
+<details><summary><b><i>Solution to Exercise 4</i></b></summary>
 
 ```python
 from beanie.operators import In
@@ -1101,7 +1101,7 @@ run(main())
 </details>
 
 
-***Ex. 5*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
+***Exercise 5*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
 
 ```python
 from pymongo import DESCENDING
@@ -1118,7 +1118,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Ex. 5</i></b></summary>
+<details><summary><b><i>Solution to Exercise 5</i></b></summary>
 
 ```python
 from pymongo import DESCENDING
@@ -1156,6 +1156,108 @@ async def main():
 ```
 
 </details>
+
+# Simple queries in MongoDb Atlas 
+
+In MongoDb Atlas you can browse data from your database. On the page, you need to select Clusters from the options on the left bar and then press button **`Browse Collection`**. From this level of the page you can see the **filter field** used for query data. You can use all the MongoDB [query operators](https://www.mongodb.com/docs/manual/reference/operator/query/) except the *\$text* and *\$expr* operators.
+
+![image](./assets/atlas-filter.png)
+# Cheat sheet [MongoDb Atlas filter](https://www.mongodb.com/docs/compass/current/query/filter/).
+
+
+Logical:
+1. **AND**: `{ $and: [ { field: value, field: value } ] }`
+2. **OR**: `{ $or: [ { field: value }, { field: value } ] }`
+3. **NOT**: `{ field: { $not: { $eq: value } } }`
+4. **NOR**: `{ $nor: [ { field: value }, { field: value } ] }`
+
+Comparison:
+1. **Greater than**: `{ field: { $gt: value } }`
+2. **Greater than or equal**: `{ field: { $gte: value } }`
+3. **Less than**: `{ field: { $lt: value } }`
+4. **Less than or equal**: `{ field: { $lte: value } }`
+5. **In an array**: `{ field: { $in: [value1, value2, ... valueN ] } }`
+6. **Not in an array**: `{ field: { $nin: [ value1, value2 ... valueN ] } }`
+7. **Equal to**: `{ field: { $eq: value } }`
+8. **Not equal to**: `{ field: { $ne: value } }`
+ 
+
+Embedded Field: `{ "field.embedded_field": value }`
+Exists: `{ field: { $exists: boolean } }`
+Type: `{ field: { $type: BSON type } }`
+Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON typeN ] } }`
+
+
+*Let's create some queries in MongoDb Altas.*
+
+***Exercise 1*** - Search for user with id. 
+
+*`HINT`: BSON object to contain id in mongo db is `ObjectId()`.*
+
+<details><summary><b><i>Solution to Exercise 1.</i></b></summary>
+
+```JavaScript
+{_id: ObjectId("66cb3940ad0f1a3e611edd3b")}
+```
+</details>
+
+
+***Exercise 2*** - Search for user which surname is `Olko`.
+
+<details><summary><b><i>Solution to Exercise 2.</i></b></summary>
+
+```JavaScript
+{surname: "Olko"}
+```
+</details>
+
+
+***Exercise 3*** - Search for users whose city address is `Warszawa`.
+
+<details><summary><b><i>Solution to Exercise 3.</i></b></summary>
+
+```JavaScript
+{"address.city": "Warszawa"}
+```
+</details>
+
+
+***Exercise 4*** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
+
+<details><summary><b><i>Solution to Exercise 4.</i></b></summary>
+
+```JavaScript
+{"name": {$in: ["Krzysztof", "Nicole", "Angelika"]}}
+```
+```JavaScript
+{$or: [{"name": "Krzysztof"}, {"name": "Nicole"}, {"name": "Angelika"}]}
+```
+</details>
+
+
+***Exercise 5*** - Search for tasks whose priority is `low` or status is `Review`. 
+
+*`HINT`: Priority int enum for `low is 1` and status int enum for `Review is 5`.*
+
+<details><summary><b><i>Solution to Exercise 5.</i></b></summary>
+
+```JavaScript
+{$or: [{priority: 1}, {status: 5}]}
+```
+</details>
+
+
+***Exercise 6*** - Search for all active tasks whose creation date is after `2024-07-18`.
+
+*`HINT`: BSON object for date in mongo db is `ISODate()`.*
+
+<details><summary><b><i>Solution to Exercise 6.</i></b></summary>
+
+```JavaScript
+{active: true, create_date: {$gt: ISODate("2024-07-18")}}
+```
+</details>
+
 
 # CRUD
 
