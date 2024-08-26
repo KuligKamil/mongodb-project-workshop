@@ -29,14 +29,19 @@ We use will use inheritance Document class same as BaseModel class.
 ```python
 hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
 hot_adam
-
-# User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
 ```
+
+```python
+User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
+```
+
 We can see two additional attributes. 'id' and 'revision_id'.
 
-TODO: explain it
+`id` field reflects the unique _id field of the MongoDB document. Each object of the Document type has this field. The default type of this is PydanticObjectId.
 
-we can use Base Model methods
+`revision_id` field is for feature helps with concurrent operations.
+
+We can use Base Model methods.
 
 
 ```python
@@ -48,37 +53,36 @@ hot_adam.model_dump()
  'email': 'hotadam@gmail.com'}
 ```
 
-value non id mean that we didn't insert to database yet.
+Value of id field mean that we didn't insert to database yet.
 
-to insert OUR Adam to database we need to use one of 5 options
+To insert OUR Adam to database we need to use one of 5 options
 
 * **insert** - basic method to insert Document
 * **insert_many** - to insert one or more Documents
 * **save** - insert, update current object of class Document to database
 * create, insert_one - synonyms for insert 
 
-
-Remember from each use await key word otherwise you will return couritne object & you will not insert object.
+Remember for each use await key word otherwise you will return couritne object & you will not insert object.
 
 ```python
 hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
-
-
-# User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
 ```
 
 ```python
 await hot_adam.save()
 ```
+ or 
 
 ```python
 await User.save(hot_adam)
 ```
-
+ or
 
 ```python
 await hot_adam.insert()
 ```
+
+ or
 
 ```python
 await User.insert(hot_adam)
@@ -86,15 +90,18 @@ await User.insert(hot_adam)
 
 ```python
 hot_adam.model_dump()
+```
 
+Result 
+
+```python 
 {'id': '66cb3c4631b062a669d4357c',
  'name': 'Adam',
  'surname': 'Brzyzek',
  'email': 'nothotadam@gmail.com'}
 ```
 
-
-now to get data
+How to get data?
 * **find** - basic function to get 
   * **to_list**
   * **first_or_none**
@@ -103,24 +110,25 @@ now to get data
 * find_one - get one document with fitlering
 * find_all - synonyms to find({})
 
-get all users in database
+Get all users in database
 
 ```python
 users = await User.find().to_list()
 ```
 
-get all users in database
+Get all users in database
+
 ```python
 result = await User.find().project(BaseInformation).first_or_none()
 ```
 
-filters Adams
+Filters Adams
 
 ```python
 adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 ```
 
-### Exercise 1 - create Document
+### Exercise 1 - Create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
 * add one user & task
 
@@ -134,7 +142,7 @@ class PriorityType(IntEnum):
     urgent = 3
 ```
 
-to drop database - for easier iterate and test
+T drop database - for easier iterate and test.
 
 ```python
 client.drop_database(name_or_database=client.workshop)
@@ -229,7 +237,7 @@ hot_adam.model_dump()
 
 ```
 
-result
+Result
 
 ```python
 {'active': True,
@@ -373,10 +381,10 @@ class TaskLogStatus(Document, Date):
 
 </details>
 
-updating & deleting 
+Updating & Deleting 
 documentation: [https://beanie-odm.dev/tutorial/updating-%26-deleting/](https://beanie-odm.dev/tutorial/updating-%26-deleting/)
 
-for update we have couple options
+For update we have couple options
 * save
 * replace -  throws: - a ValueError if the document does not have an id yet, or - a beanie.exceptions.DocumentNotFound
 * update, set, inc - can be performed on the result of a find or find_one query, or on a document that was returned from an earlier query.
@@ -389,7 +397,7 @@ user = await user.set({User.name: "John"})
 user.model_dump()
 ```
 
-result 
+Result 
 
 ```python
 {'id': '66cbc95d9721746de2ec9ee6',
@@ -398,7 +406,7 @@ result
  'email': 'hotbrzyzek@gmail.com'}
 ```
 
-to delete use method delete() XD
+To delete use method delete() XD
 
 ```python
 toxic_workshop_instructor = await User.find_one(User.name == "Kamil")
@@ -440,13 +448,13 @@ class UserBasicInfo(BaseModel):
 adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 ```
 
-* settings
+* Settings
     add option from settings [https://beanie-odm.dev/tutorial/defining-a-document/](https://beanie-odm.dev/tutorial/defining-a-document/)
     
 
-* we recommend to try interactive tutorial prepared at official website mongodb.com [https://www.mongodb.com/docs/manual/tutorial/getting-started/](https://www.mongodb.com/docs/manual/tutorial/getting-started/ )
+* We recommend to try interactive tutorial prepared at official website mongodb.com [https://www.mongodb.com/docs/manual/tutorial/getting-started/](https://www.mongodb.com/docs/manual/tutorial/getting-started/ )
 
 
-Good to check setting parameter is_root = True
+* Good to check setting parameter is_root = True
 [https://beanie-odm.dev/tutorial/inheritance/](https://beanie-odm.dev/tutorial/inheritance/)
 
