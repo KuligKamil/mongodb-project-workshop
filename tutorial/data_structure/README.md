@@ -1,118 +1,3 @@
-## data structure 
-we recommend to try interactive tutorial prepared at official website mongodb.com
-<!-- https://www.mongodb.com/docs/manual/tutorial/getting-started/ -->
-
-## MongoDB as a Document Database
-
-In MongoDB, databases hold one or more collections of documents.
-
-Collections are analogous to tables in relational databases.
-
-![Alt text](assets/collections.png)
-Picture from mongodb.com
-
-MongoDB stores data records as documents (specifically BSON documents) which are gathered together in collections.
-
-![JSON vs BSON](assets/jsonvsbson.png)
-JSON 
-https://www.mongodb.com/resources/basics/json-and-bson
-
-BSON specification
-https://bsonspec.org/
-
-Today, JSON shows up in many different cases:
- 
-* APIs
-* Configuration files
-* Log messages
-* Database storage
-
-However, there are several issues that make JSON less than ideal for usage inside of a database.
-
-JSON only supports a limited number of basic data types. Most notably, JSON lacks support for datetime and binary data.
-
-JSON objects and properties don't have fixed length which makes traversal slower.
-
-JSON does not provide metadata and type information, taking longer to retrieve documents.
-
-To make MongoDB JSON-first but still high-performance and general purpose, BSON was invented to bridge the gap: a binary representation to store data as JSON documents, optimized for speed, space, and efficiency. It's not dissimilar from other binary interchange formats like Protocol Buffers, or Thrift, in terms of approach.
-
-* security not readable for people - we have tool for read it
-* faster
-* smaller
-* contain more information
-
-
-
-## pydantic + beanie = ❤️
-
-To create Document in Collections we need to use the basic class in Beanie 
-The basic class in Beanie is Document class to create collections of Document
-
-After inspect of the Beanie base class Document
-we can see it's inherent from pydantic Base Model 
-
-```python
-import inspect
-from beanie import Document
-from pydantic import BaseModel
-
-
-inspect.getmro(Document)
-```
-
-```
-(beanie.odm.documents.Document,
- lazy_model.parser.new.LazyModel,
- pydantic.main.BaseModel,
- beanie.odm.interfaces.setters.SettersInterface,
- beanie.odm.interfaces.inheritance.InheritanceInterface,
- beanie.odm.interfaces.find.FindInterface,
- beanie.odm.interfaces.aggregate.AggregateInterface,
- beanie.odm.interfaces.getters.OtherGettersInterface,
- object)
-```
-
-pydantic + beanie = ❤️
-
-### How use Document
-
-when we would like to create application 
-
-we want to create for users
-
-that why our first class will be user
-
-Example in User class in pydantic
-
-```python 
-from pydantic import BaseModel
-
-
-class User(BaseModel):
-    name: str
-    surname: str
-    email: str
-```
-
-Example in User class in beanie
-
-```python
-from beanie import Document
-
-
-class User(Document):
-    name: str
-    surname: str
-    email: str
-```
-
-
-if you run code above, you will see error message 'CollectionWasNotInitialized'.
-To Initialized collection need to use init_beanie function.
-
-#
-
 ```python 
 import os
 
@@ -132,10 +17,12 @@ await init_beanie(
     document_models=[User],
     multiprocessing_mode=True,
 )
-
 ```
 
-Okey, but we don't have user.
+Do you see Schema in Atlas?
+
+
+Okey, but we don't have Document.
 
 We use will use inheritance Document class same as BaseModel class.
 
@@ -237,43 +124,262 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
 * add one user & task
 
-Solution
+example of priority type
 
-Embedded Document Example
+```python
+
+class PriorityType(IntEnum):
+    low = 1
+    normal = 2
+    urgent = 3
+```
+
+to drop database - for easier iterate and test
+
+```python
+client.drop_database(name_or_database=client.workshop)
+```
+
+<details><summary><b><i>Solution</i></b></summary>
+
+```python
+
+from enum import IntEnum
+from typing import Optional
+from beanie import Document
+from pydantic import BaseModel
+import os
+
+from beanie import init_beanie
+from motor.motor_asyncio import AsyncIOMotorClient
+
+class PriorityType(IntEnum):
+    low = 1
+    normal = 2
+    urgent = 3
 
 
-### Exercise 2 - create Embedded Document
+class SizeType(IntEnum):
+    S = 1
+    M = 2
+    L = 3
+
+
+class StatusType(IntEnum):
+    BACKLOG = 1
+    TODO = 2
+    InProgress = 3
+    OnHold = 4
+    Review = 5
+    Done = 6
+
+
+class Task(Document):
+    name: str
+    description: Optional[str] = None
+    priority: Optional[PriorityType] = None
+    size: Optional[SizeType] = None
+    status: StatusType = StatusType.BACKLOG
+
+
+class User(Document):
+    name: str
+    surname: str
+    email: str
+    address: Optional[Address] = None
+    recently_tasks: Optional[Task] = None
+
+
+client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
+
+await init_beanie(
+    database=client.workshop,
+    document_models=[User, Task],
+    multiprocessing_mode=True,
+)
+client.drop_database(name_or_database=client.workshop)
+```
+
+</details>
+
+You can always extend your Document with other classes like with pydantic classes.
+
+For example we can add technical attribute if user is active and reuse it in the task too.
+
+
+
+```python
+
+class Active(BaseModel):
+  active: bool = True
+
+
+class User(Document, Active):
+    name: str
+    surname: str
+    email: str
+
+hot_adam = User(
+    name="Adam",
+    surname="Brzyzek",
+    email="hotadam@gmail.com")
+
+hot_adam.model_dump()
+
+
+```
+
+result
+
+```python
+{'active': True,
+ 'id': None,
+ 'name': 'Adam',
+ 'surname': 'Brzyzek',
+ 'email': 'hotadam@gmail.com'}
+```
+
+
+In a relational database, you store each individual entity in its own table, and link them together through foreign keys. While MongoDB certainly supports references from one document to another, and even multi-document joins, it’s a mistake to use a document database the same way you use a relational one.
+
+
+Embedded documents are an efficient and clean way to store related data, especially data that’s regularly accessed together. 
+
+In general, when designing schemas for MongoDB, you should prefer embedding by default, and use references and application-side or database-side joins only when they’re worthwhile. The more often a given workload can retrieve a single document and have all the data it needs, the more consistently high-performance your application will be.
+
+Link to documentation for MongoDB - Embedding MongoDB
+[https://www.mongodb.com/resources/products/fundamentals/embedded-mongodb](https://www.mongodb.com/resources/products/fundamentals/embedded-mongodb)
+
+Example Embedded Document - User Address
+
+```python
+class Address(BaseModel):
+    country: str
+    city: str
+    street: str
+    building_number: str
+    zip_code: str
+
+
+class User(Document):
+    name: str
+    surname: str
+    email: str
+    address: Optional[Address] = None
+
+hot_adam = User(
+    name="Adam",
+    surname="Brzyzek",
+    email="hotadam@gmail.com",
+    address=Address(
+        country="Poland",
+        city="Gliwice",
+        street="Jana Matejki 3",
+        building_number="IBU Craft Beers",
+        zip_code="44-100",
+    ),
+)
+```
+
+Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9)
+
+
+### Exercise 2 - create Embedded Document & extend Document
 * add to User Document recently task added by user
-* hints use save
-
-
-Solution
-
-clear database
-Active Example
-
-
-
-### Exercise 3 - extend Document
 * add extend tables with technical tables like active, create_data & update_data
+* add one user & one task
 
-Solution
+<details><summary><b><i>Solution</i></b></summary>
 
-clear database
-link Task example
+```python
+
+class Date(BaseModel):
+    create_date: datetime = datetime.now()
+    update_date: datetime = datetime.now()
 
 
-### Exercise 4 - link to other Document
+class Address(BaseModel):
+    country: str
+    city: str
+    street: str
+    building_number: str
+    zip_code: str
+
+
+class User(Document, Active, Date):
+    name: str
+    surname: str
+    email: str
+    address: Optional[Address] = None
+    recently_tasks: Optional[Task] = None
+```
+
+</details>
+
+
+## Relations
+The document can contain links to other documents in their fields.
+
+Example add link Task to User
+
+
+```python 
+User = ForwardRef("User")
+
+class Task(Document, Date, Active):
+    name: str
+    status: StatusType = StatusType.BACKLOG
+    user: Link[User]
+
+class User(Document, Date, Active):
+    name: str
+    surname: str
+    email: str
+    address: Optional[Address] = None
+    recently_tasks: Optional[list[Task]] = []
+
+# initialize collection & clear database
+
+hot_adam = User(name="Adam",surname="Brzyzek",email="hotbrzyzek@gmail.com")
+
+await User.insert(hot_adam)
+
+tasks = [
+    Task(name="sail", user=hot_adam.id),
+    Task(name="drink beers", user=hot_adam.id),
+]
+await Task.insert_many(tasks)
+user.recently_tasks = tasks
+await user.save()
+```
+
+
+### Exercise 3 - link to other Document
 * create document TaskLogStatus for log task status, 
   needs to have priority, size, status, date, link to user and task
+* add task change status
 
-Solution
+<details><summary><b><i>Solution</i></b></summary>
+
+```python
+class TaskLogStatus(Document, Date):
+    priority: Optional[PriorityType] = None
+    size: Optional[SizeType] = None
+    status: StatusType = StatusType.BACKLOG
+    date: datetime = datetime.now()
+    task: Link[Task]
+    user: Link[User]
+```
+
+</details>
 
 update, delete example
 
-### Exercise 5 - update, delete
+### Exercise 4 - update, delete
 
-Solution
+<details><summary><b><i>Solution</i></b></summary>
+
+</details>
   
 ## important mentions 
 * This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:
@@ -297,25 +403,12 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 * settings
 # add option from settings
 # https://beanie-odm.dev/tutorial/defining-a-document/
-# Settings
-# The inner class Settings is used to configure:
-# MongoDB collection name
-# Indexes
-# Encoders
-# Use of revision_id
-# Use of cache
-# Use of state management
-# Validation on save
-# Configure if nulls should be saved to the database
-# Configure nesting depth for linked documents on the fetch operation
+
+we recommend to try interactive tutorial prepared at official website mongodb.com
+<!-- https://www.mongodb.com/docs/manual/tutorial/getting-started/ -->
 
 
-# tips about configuration
-
-* ids in mongodb 
-
-
-
-
+Good to check setting parameter is_root = True
+[https://beanie-odm.dev/tutorial/inheritance/](https://beanie-odm.dev/tutorial/inheritance/)
 
 <!-- https://www.mongodb.com/docs/manual/introduction/ -->
