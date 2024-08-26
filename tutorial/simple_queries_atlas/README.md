@@ -27,3 +27,74 @@ Embedded Field: `{ "field.embedded_field": value }`
 Exists: `{ field: { $exists: boolean } }`
 Type: `{ field: { $type: BSON type } }`
 Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON typeN ] } }`
+
+
+*Let's create some queries in MongoDb Altas.*
+
+***Exercise 1*** - Search for user with id. 
+
+*`HINT`: BSON object to contain id in mongo db is `ObjectId()`.*
+
+<details><summary><b><i>Solution to Exercise 1.</i></b></summary>
+
+```JavaScript
+{_id: ObjectId("66cb3940ad0f1a3e611edd3b")}
+```
+</details>
+
+
+***Exercise 2*** - Search for user which surname is `Olko`.
+
+<details><summary><b><i>Solution to Exercise 2.</i></b></summary>
+
+```JavaScript
+{surname: "Olko"}
+```
+</details>
+
+
+***Exercise 3*** - Search for users whose city address is `Warszawa`.
+
+<details><summary><b><i>Solution to Exercise 3.</i></b></summary>
+
+```JavaScript
+{"address.city": "Warszawa"}
+```
+</details>
+
+
+***Exercise 4*** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
+
+<details><summary><b><i>Solution to Exercise 4.</i></b></summary>
+
+```JavaScript
+{"name": {$in: ["Krzysztof", "Nicole", "Angelika"]}}
+```
+```JavaScript
+{$or: [{"name": "Krzysztof"}, {"name": "Nicole"}, {"name": "Angelika"}]}
+```
+</details>
+
+
+***Exercise 5*** - Search for tasks whose priority is `low` or status is `Review`. 
+
+*`HINT`: Priority int enum for `low is 1` and status int enum for `Review is 5`.*
+
+<details><summary><b><i>Solution to Exercise 5.</i></b></summary>
+
+```JavaScript
+{$or: [{priority: 1}, {status: 5}]}
+```
+</details>
+
+
+***Exercise 6*** - Search for all active tasks whose creation date is after `2024-07-18`.
+
+*`HINT`: BSON object for date in mongo db is `ISODate()`.*
+
+<details><summary><b><i>Solution to Exercise 6.</i></b></summary>
+
+```JavaScript
+{active: true, create_date: {$gt: ISODate("2024-07-18")}}
+```
+</details>
