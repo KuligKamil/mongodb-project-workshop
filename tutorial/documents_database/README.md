@@ -56,6 +56,8 @@ from pydantic import BaseModel
 inspect.getmro(Document)
 ```
 
+Result
+
 ```
 (beanie.odm.documents.Document,
  lazy_model.parser.new.LazyModel,

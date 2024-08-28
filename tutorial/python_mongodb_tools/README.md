@@ -8,7 +8,7 @@ We would like to use async framework for better performance & scalability.
 
 But remember when you need to use async framework.
 
-![Alt text](asset/async.png)
+![asset/async.png](assets/async.png)
 
 We found 4 potential candidates to use them. 
 

@@ -31,11 +31,13 @@ hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
 hot_adam
 ```
 
+Result
+
 ```python
 User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
 ```
 
-We can see two additional attributes. 'id' and 'revision_id'.
+We can see two additional attributes. `id` and `revision_id`.
 
 `id` field reflects the unique _id field of the MongoDB document. Each object of the Document type has this field. The default type of this is PydanticObjectId.
 
@@ -119,13 +121,13 @@ users = await User.find().to_list()
 Get all users in database
 
 ```python
-result = await User.find().project(BaseInformation).first_or_none()
+result = await User.find().first_or_none()
 ```
 
 Filters Adams
 
 ```python
-adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
+adams = await User.find(User.name == "Adam").to_list()
 ```
 
 ### Exercise 1 - Create Document
@@ -210,10 +212,10 @@ client.drop_database(name_or_database=client.workshop)
 
 </details>
 
+
 You can always extend your Document with other classes like with pydantic classes.
 
 For example we can add technical attribute if user is active and reuse it in the task too.
-
 
 
 ```python
@@ -233,8 +235,6 @@ hot_adam = User(
     email="hotadam@gmail.com")
 
 hot_adam.model_dump()
-
-
 ```
 
 Result
@@ -380,6 +380,7 @@ class TaskLogStatus(Document, Date):
 ```
 
 </details>
+
 
 Updating & Deleting 
 documentation: [https://beanie-odm.dev/tutorial/updating-%26-deleting/](https://beanie-odm.dev/tutorial/updating-%26-deleting/)
