@@ -107,7 +107,7 @@ How to get data?
   * **first_or_none**
   
 * get - get document with id, without filtering
-* find_one - get one document with fitlering
+* find_one - get one document with filtering
 * find_all - synonyms to find({})
 
 Get all users in database
@@ -142,7 +142,7 @@ class PriorityType(IntEnum):
     urgent = 3
 ```
 
-T drop database - for easier iterate and test.
+To drop database - for easier iterate and test.
 
 ```python
 client.drop_database(name_or_database=client.workshop)
@@ -422,11 +422,6 @@ await toxic_workshop_instructor.delete()
 Come on. Don't cheat XD
 </details>
   
-### Exercise 5 - create crud for User, Task & TaskLogStatus
-
-<details><summary><b><i>Solution</i></b></summary>
-Come on. Again?! XD
-</details>
 
 ## important mentions 
 * This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:

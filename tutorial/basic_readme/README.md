@@ -1,1 +1,1 @@
-# mongodb-project-workshop
+# PyConPL'24 Gliwice

@@ -9,7 +9,7 @@
 <aside>
   HINT: if you need to manage multiple versions of Python 
     
-  we recommend to use  pyenv & pyenv virtualenv 
+  we recommend to use `pyenv` & `pyenv virtualenv`
   
   [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
   
@@ -25,11 +25,11 @@
 
 </aside> 
 
-4. Install version of python and setup environment. 
+4. Setup environment. 
   
 <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
 
   <details>
   <summary>how to use pdm</summary>
@@ -51,13 +51,13 @@
   </details>
 </aside>
 
- you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
+ you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
 
   <details>
-  <summary>how to use venv</summary>
+  <summary>how to use `venv`</summary>
 
-  create venv
+  create `venv`
 
   `python -m venv .`
 
@@ -89,11 +89,11 @@
 5. Create file with environment variables `.envrc` file or `.env` file
 
 <aside>
-💡 https://direnv.net/
+💡We recommend to use `direnv`  https://direnv.net/
 
-- Load [12factor apps](https://12factor.net/) environment variables
-- Create per-project isolated development environments
-- Load secrets for deployment
+* Load [12factor apps](https://12factor.net/) environment variables
+* Create per-project isolated development environments
+* Load secrets for deployment
 </aside>
 
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)

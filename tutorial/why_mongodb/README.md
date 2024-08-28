@@ -9,7 +9,7 @@
 
 <!-- who know what is ABC?  -->
 
-Always Be Curies! 
+Always Be Curious! 
 
 We never use commercially use MongoDB or NoSQL Database.
 

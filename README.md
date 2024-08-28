@@ -1,4 +1,4 @@
-# mongodb-project-workshop
+# PyConPL'24 Gliwice
 
 ## Introduction
 
@@ -38,7 +38,7 @@ Classified as a NoSQL database product, MongoDB utilizes JSON-like documents wit
 
 <!-- who know what is ABC?  -->
 
-Always Be Curies! 
+Always Be Curious! 
 
 We never use commercially use MongoDB or NoSQL Database.
 
@@ -101,6 +101,12 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 We want to use mongodb for fast prototype, fast deliver, high Developer Experience and use FastAPI asynchronously.
 
 FastAPI is awesoooome <3
+
+We would like to use async framework for better performance & scalability.
+
+But remember when you need to use async framework.
+
+![Alt text](asset/async.png)
 
 We found 4 potential candidates to use them. 
 
@@ -170,7 +176,7 @@ If you would like more native approach in MongoDB
 <aside>
   HINT: if you need to manage multiple versions of Python 
     
-  we recommend to use  pyenv & pyenv virtualenv 
+  we recommend to use `pyenv` & `pyenv virtualenv`
   
   [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
   
@@ -186,11 +192,11 @@ If you would like more native approach in MongoDB
 
 </aside> 
 
-4. Install version of python and setup environment. 
+4. Setup environment. 
   
 <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
 
   <details>
   <summary>how to use pdm</summary>
@@ -212,13 +218,13 @@ If you would like more native approach in MongoDB
   </details>
 </aside>
 
- you can use old good venv [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
+ you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
 
   <details>
-  <summary>how to use venv</summary>
+  <summary>how to use `venv`</summary>
 
-  create venv
+  create `venv`
 
   `python -m venv .`
 
@@ -250,11 +256,11 @@ If you would like more native approach in MongoDB
 5. Create file with environment variables `.envrc` file or `.env` file
 
 <aside>
-💡 https://direnv.net/
+💡We recommend to use `direnv`  https://direnv.net/
 
-- Load [12factor apps](https://12factor.net/) environment variables
-- Create per-project isolated development environments
-- Load secrets for deployment
+* Load [12factor apps](https://12factor.net/) environment variables
+* Create per-project isolated development environments
+* Load secrets for deployment
 </aside>
 
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
@@ -265,6 +271,13 @@ If you would like more native approach in MongoDB
 
 
 # Tutorial for creating an account in MongoDb Atlas.
+
+MongoDB Atlas is fully managed cloud database that handle all the complexity of:
+deploying, managing, and healing your deployments on the cloud service provider of your choice(AWS, Azure, GCP). With Atlas you can create account and set up database with only few clicks.
+
+
+DBaaS(Database as a Service) is a service that allows to set up, deploy and scale database  without worrying about any physical hardware, software updates and details of configuration for performance.
+
 1. Go to the [MongoDb website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
 ![image](./assets/1-Atlas.png)
 2. Fill your informations and agree for Terms of Service and Privacy Policy. Press **Create your Atlas account** button. You can also use your Google account to create the account.
@@ -406,7 +419,7 @@ To Initialized collection need to use init_beanie function.
 
     * Visual studio code - *[tutorial](https://code.visualstudio.com/docs/azure/mongodb)*
 6. Connect to your database from python using beanie framework. 
-To initilaize **Beanie** requiere:
+To initialize **Beanie** require:
     * Motor as an async database engine.
     * List of your document models.
 
@@ -546,7 +559,7 @@ How to get data?
   * **first_or_none**
   
 * get - get document with id, without filtering
-* find_one - get one document with fitlering
+* find_one - get one document with filtering
 * find_all - synonyms to find({})
 
 Get all users in database
@@ -581,7 +594,7 @@ class PriorityType(IntEnum):
     urgent = 3
 ```
 
-T drop database - for easier iterate and test.
+To drop database - for easier iterate and test.
 
 ```python
 client.drop_database(name_or_database=client.workshop)
@@ -861,11 +874,6 @@ await toxic_workshop_instructor.delete()
 Come on. Don't cheat XD
 </details>
   
-### Exercise 5 - create crud for User, Task & TaskLogStatus
-
-<details><summary><b><i>Solution</i></b></summary>
-Come on. Again?! XD
-</details>
 
 ## important mentions 
 * This returns a FindMany object, which can be used to access the results in different ways. To loop through the results, use a async for loop:
@@ -899,8 +907,8 @@ adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
 
 
 
-# Data genertors
-To fill our database with data we need to generate dummy data. For that purpose has been useds used [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
+# Data generators
+To fill our database with data we need to generate dummy data. For that purpose has been used [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
 List of Standard Providers you can find [here](https://faker.readthedocs.io/en/master/providers.html).
 
 1. **Creation and initialization** of a Faker - dummy data generator. Below you can see the code for the init faker. Has been added the locale argument to return localized data from Poland. Seed value has been set to 2137, it will be helpful to compare the results of our queries later in the workshop.
@@ -912,7 +920,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fileds are missing.*
+***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
 
 ```python
 from collections.abc import Generator
@@ -1259,16 +1267,30 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-# CRUD
+### Exercise X - create crud for User, Task & TaskLogStatus
 
-InProgress
+create functions, for example
+* get task for specific user id
+* get all tasks from active users
+* get created logs in date range
+* create User, Task & TaskLogStatus
+* delete/deactivate user, task & TaskLogStatus
 
+<details><summary><b><i>Solution</i></b></summary>
+Come on. Again?! XD
+</details>
 
-# Tests
-
-In Progress
 
 
 # Resources
 
-InProgress
+* Documentation for MongDB [https://www.mongodb.com/docs/](https://www.mongodb.com/docs/)
+
+* Documentation Beanie [https://beanie-odm.dev/](https://beanie-odm.dev/)
+
+* Official channel MongoDB - we recommend   
+  * Jumpstart [link](https://www.youtube.com/watch?v=RGfFpQF0NpE&list=PL4RCxklHWZ9v2lcat4oEVGQhZg6r4IQGV )
+  * Schema Design [link](https://www.youtube.com/watch?v=J1RRM53I3kc&list=PL4RCxklHWZ9tB00Sh2nMftVIBaVG_-bmY)
+* Code with Mark Smith on official channel 
+* Presentation on PyCon by Mark Smith - Everything You Know About MongoDB is Wrong! [link](https://www.youtube.com/watch?v=ISfzI7LTDL4) 
+

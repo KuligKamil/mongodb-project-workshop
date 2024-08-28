@@ -1,5 +1,5 @@
-# Data genertors
-To fill our database with data we need to generate dummy data. For that purpose has been useds used [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
+# Data generators
+To fill our database with data we need to generate dummy data. For that purpose has been used [Faker](https://github.com/xfxf/faker-python/blob/master/README.rst). Faker is a Python package that generates fake data for you.
 List of Standard Providers you can find [here](https://faker.readthedocs.io/en/master/providers.html).
 
 1. **Creation and initialization** of a Faker - dummy data generator. Below you can see the code for the init faker. Has been added the locale argument to return localized data from Poland. Seed value has been set to 2137, it will be helpful to compare the results of our queries later in the workshop.
@@ -11,7 +11,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fileds are missing.*
+***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
 
 ```python
 from collections.abc import Generator

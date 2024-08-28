@@ -13,7 +13,7 @@
 
     * Visual studio code - *[tutorial](https://code.visualstudio.com/docs/azure/mongodb)*
 6. Connect to your database from python using beanie framework. 
-To initilaize **Beanie** requiere:
+To initialize **Beanie** require:
     * Motor as an async database engine.
     * List of your document models.
 
