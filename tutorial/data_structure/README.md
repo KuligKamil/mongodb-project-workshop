@@ -110,7 +110,7 @@ Get all users in database
 users = await User.find().to_list()
 ```
 
-Get all users in database
+Get first user in database
 
 ```python
 result = await User.find().first_or_none()

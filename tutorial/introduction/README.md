@@ -8,7 +8,7 @@ linkedin: https://www.linkedin.com/in/adam-brzyzek/
 
 discord: brzyzu
 
-
+---
 
 Kamil Kulig - Backend Developer
 

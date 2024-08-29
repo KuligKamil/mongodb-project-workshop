@@ -10,7 +10,7 @@ linkedin: https://www.linkedin.com/in/adam-brzyzek/
 
 discord: brzyzu
 
-
+---
 
 Kamil Kulig - Backend Developer
 
@@ -93,7 +93,8 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 
 ### Summary
 
-  "The best option to learn something new is to create workshop. You have perfect motivation, deadline." Kamil Kulig
+  > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+  Kamil Kulig
   
   MongoDB is the most popular database that as not Relational Database. 
 
@@ -567,7 +568,7 @@ Get all users in database
 users = await User.find().to_list()
 ```
 
-Get all users in database
+Get first user in database
 
 ```python
 result = await User.find().first_or_none()
