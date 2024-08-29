@@ -33,7 +33,7 @@ MongoEngine and Beanie are ODMs.
 
 Document-Object Mapper (think ORM Object–Relational Mapping, but for document databases).
 
-PyMongo and MongoEngine out - no asynchronous support from PyMongo or MongoEngine.
+PyMongo and MongoEngine out - no asynchronous support.
 
 For enter easier in MongoDB world & hype about tool we decide to use Beanie.
 
@@ -47,12 +47,6 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 ![beanie dependency](assets/beanie-dependency.png)
 
-
-## [OPTIONAL INFO] Mongoose [https://www.mongodb.com/docs/mongodb-shell/](https://www.mongodb.com/docs/mongodb-shell/)
-
-The MongoDB Shell, mongosh, is a JavaScript and Node.js REPL environment for interacting with MongoDB deployments in Atlas  , locally, or on another remote host. Use the MongoDB Shell to test queries and interact with the data in your MongoDB database.
-
-If you would like more native approach in MongoDB
 
 
 ## Reference

@@ -17,6 +17,9 @@ To initialize **Beanie** require:
     * Motor as an async database engine.
     * List of your document models.
 
+This approach isn't the way to do in production.
+
+
 ```python 
 import os
 
@@ -36,7 +39,7 @@ async def database_init(document_models: list[Document], clear_database: False) 
         multiprocessing_mode=True,
     )
     # To drop database - for easier iterate and test.
-    if close_database:
+    if clear_database:
         client.drop_database(name_or_database=client.workshop)
 
 run(database_init(document_models=[Task, User]))

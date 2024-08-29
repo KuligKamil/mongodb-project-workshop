@@ -1,8 +1,7 @@
 ```python
 from src.database_connection import database_init
 from asyncio import run
-from beanie import Document, init_beanie
-from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import Document
 
 
 class User(Document):
@@ -353,7 +352,7 @@ hot_adam = User(name="Adam",surname="Brzyzek",email="hotbrzyzek@gmail.com")
 await User.insert(hot_adam)
 
 tasks = [
-    Task(name="sail", user=hot_adam.id),
+    Task(name="sail", user=hot_adam.id), # TODO: CHECK IF IT WORKING with hot_adam without id
     Task(name="drink beers", user=hot_adam.id),
 ]
 await Task.insert_many(tasks)

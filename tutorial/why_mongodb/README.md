@@ -3,6 +3,7 @@
 "If you can’t explain it to a six-year-old, you don’t understand it yourself" 
 * Rule ABC
 * MongoDB Popularity
+* Rumors that it's easy to do MVP & have good Developer Experience
   
 
 ### Rule ABC
@@ -66,3 +67,5 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
   "The best option to learn something new is to create workshop. You have perfect motivation, deadline." Kamil Kulig
   
   MongoDB is the most popular database that as not Relational Database. 
+
+  Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.

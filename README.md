@@ -10,7 +10,7 @@ linkedin: https://www.linkedin.com/in/adam-brzyzek/
 
 discord: brzyzu
 
----
+
 
 Kamil Kulig - Backend Developer
 
@@ -32,6 +32,7 @@ Classified as a NoSQL database product, MongoDB utilizes JSON-like documents wit
 "If you can’t explain it to a six-year-old, you don’t understand it yourself" 
 * Rule ABC
 * MongoDB Popularity
+* Rumors that it's easy to do MVP & have good Developer Experience
   
 
 ### Rule ABC
@@ -96,6 +97,8 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
   
   MongoDB is the most popular database that as not Relational Database. 
 
+  Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.
+
 ## Comparison solution for using Python with MongoDB 
 
 We want to use mongodb for fast prototype, fast deliver, high Developer Experience and use FastAPI asynchronously.
@@ -131,7 +134,7 @@ MongoEngine and Beanie are ODMs.
 
 Document-Object Mapper (think ORM Object–Relational Mapping, but for document databases).
 
-PyMongo and MongoEngine out - no asynchronous support from PyMongo or MongoEngine.
+PyMongo and MongoEngine out - no asynchronous support.
 
 For enter easier in MongoDB world & hype about tool we decide to use Beanie.
 
@@ -145,12 +148,6 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 ![beanie dependency](assets/beanie-dependency.png)
 
-
-## [OPTIONAL INFO] Mongoose [https://www.mongodb.com/docs/mongodb-shell/](https://www.mongodb.com/docs/mongodb-shell/)
-
-The MongoDB Shell, mongosh, is a JavaScript and Node.js REPL environment for interacting with MongoDB deployments in Atlas  , locally, or on another remote host. Use the MongoDB Shell to test queries and interact with the data in your MongoDB database.
-
-If you would like more native approach in MongoDB
 
 
 ## Reference
@@ -291,7 +288,7 @@ DBaaS(Database as a Service) is a service that allows to set up, deploy and scal
 ![image](./assets/6-Atlas.png)
 6. Now create a user for your database.
 ![image](./assets/7-Atlas.png)
-
+ATTENTION! Save password for user!
 
 ## MongoDB as a Documents Database
 
@@ -339,8 +336,7 @@ To make MongoDB JSON-first but still high-performance and general purpose, BSON 
 To create Document in Collections we need to use the basic class in Beanie 
 The basic class in Beanie is Document class to create collections of Document
 
-After inspect of the Beanie base class Document
-we can see it's inherent from pydantic Base Model 
+After inspect of the Beanie base class Document, it's inherent from pydantic Base Model.
 
 ```python
 import inspect
@@ -424,6 +420,9 @@ To initialize **Beanie** require:
     * Motor as an async database engine.
     * List of your document models.
 
+This approach isn't the way to do in production.
+
+
 ```python 
 import os
 
@@ -443,7 +442,7 @@ async def database_init(document_models: list[Document], clear_database: False) 
         multiprocessing_mode=True,
     )
     # To drop database - for easier iterate and test.
-    if close_database:
+    if clear_database:
         client.drop_database(name_or_database=client.workshop)
 
 run(database_init(document_models=[Task, User]))
@@ -459,8 +458,7 @@ Function **`init_beanie`** also supports the parameters named:
 ```python
 from src.database_connection import database_init
 from asyncio import run
-from beanie import Document, init_beanie
-from motor.motor_asyncio import AsyncIOMotorClient
+from beanie import Document
 
 
 class User(Document):
@@ -811,7 +809,7 @@ hot_adam = User(name="Adam",surname="Brzyzek",email="hotbrzyzek@gmail.com")
 await User.insert(hot_adam)
 
 tasks = [
-    Task(name="sail", user=hot_adam.id),
+    Task(name="sail", user=hot_adam.id), # TODO: CHECK IF IT WORKING with hot_adam without id
     Task(name="drink beers", user=hot_adam.id),
 ]
 await Task.insert_many(tasks)
@@ -1301,9 +1299,16 @@ Come on. Again?! XD
 
 * Documentation Beanie [https://beanie-odm.dev/](https://beanie-odm.dev/)
 
+* Please join official Beanie Discord Channel [https://discord.gg/AwwTrbCASP](https://discord.gg/AwwTrbCASP)
+
 * Official channel MongoDB - we recommend   
   * Jumpstart [link](https://www.youtube.com/watch?v=RGfFpQF0NpE&list=PL4RCxklHWZ9v2lcat4oEVGQhZg6r4IQGV )
   * Schema Design [link](https://www.youtube.com/watch?v=J1RRM53I3kc&list=PL4RCxklHWZ9tB00Sh2nMftVIBaVG_-bmY)
 * Code with Mark Smith on official channel 
 * Presentation on PyCon by Mark Smith - Everything You Know About MongoDB is Wrong! [link](https://www.youtube.com/watch?v=ISfzI7LTDL4) 
 
+## [OPTIONAL INFO] Mongoose [https://www.mongodb.com/docs/mongodb-shell/](https://www.mongodb.com/docs/mongodb-shell/)
+
+The MongoDB Shell, mongosh, is a JavaScript and Node.js REPL environment for interacting with MongoDB deployments in Atlas  , locally, or on another remote host. Use the MongoDB Shell to test queries and interact with the data in your MongoDB database.
+
+If you would like more native approach in MongoDB
