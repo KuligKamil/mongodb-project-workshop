@@ -1,5 +1,8 @@
 # PyConPL'24 Gliwice 
 
+
+[repo qr code](assets/repo.png)
+
 ## Introduction
 
 Adam Brzyzek - Junior Backend Developer
