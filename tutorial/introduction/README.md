@@ -1,6 +1,6 @@
 ## Introduction
 
-Adam Brzyzek - Junior Backed Developer
+Adam Brzyzek - Junior Backend Developer
 
 github: https://github.com/ABrzyzek
 

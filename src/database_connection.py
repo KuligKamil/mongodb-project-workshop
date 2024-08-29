@@ -1,16 +1,17 @@
 import os
 
-from beanie import init_beanie
+from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from models import Task, User
 
-
-async def database_init():
+async def database_init(
+    document_models: list[Document], clean_database: bool = False
+) -> None:
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
     await init_beanie(
         database=client.workshop,
-        document_models=[Task, User],
+        document_models=document_models,
         multiprocessing_mode=True,
     )
-    # client.drop_database(name_or_database=client.workshop)
+    if clean_database:
+        client.drop_database(name_or_database=client.workshop)

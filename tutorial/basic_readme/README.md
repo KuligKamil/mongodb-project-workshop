@@ -1,1 +1,1 @@
-# PyConPL'24 Gliwice
+# PyConPL'24 Gliwice 

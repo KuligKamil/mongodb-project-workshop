@@ -20,21 +20,26 @@ To initialize **Beanie** require:
 ```python 
 import os
 
-from beanie import init_beanie
+from asyncio import run
+from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 from src.models import Task, User
 
-async def database_init():
+async def database_init(document_models: list[Document], clear_database: False) -> None:
     # Create Motor client
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 
     # Initialize beanie with the Sample document class and a database
     await init_beanie(
         database=client.workshop,
-        document_models=[Task, User],
+        document_models=,
         multiprocessing_mode=True,
     )
+    # To drop database - for easier iterate and test.
+    if close_database:
+        client.drop_database(name_or_database=client.workshop)
 
+run(database_init(document_models=[Task, User]))
 ```
 Function **`init_beanie`** also supports the parameters named:
 * `allow_index_dropping: bool = False` - If you manage the indexes by yourself, when the parameter is set to`True`, indexes will be dropped.
