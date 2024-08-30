@@ -28,7 +28,7 @@ from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 
 
-async def database_init(document_models: list[Document], clear_database:bool = False) -> None:
+async def database_init(document_models: list[Document], clear_database: bool = False) -> None:
     # Create Motor client
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 

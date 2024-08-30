@@ -145,8 +145,6 @@ class PriorityType(IntEnum):
 from enum import IntEnum
 from typing import Optional
 from pydantic import BaseModel
-import os
-
 from asyncio import run
 from beanie import Document
 

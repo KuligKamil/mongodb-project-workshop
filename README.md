@@ -71,33 +71,14 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 * DB-Engines Ranking of Document Stores
   [https://db-engines.com/en/ranking/document+store](https://db-engines.com/en/ranking/document+store)
 
-* Method of calculating the scores of the DB-Engines Ranking
-  The DB-Engines Ranking is a list of database management systems ranked by their current popularity. We measure the popularity of a system by using the following parameters:
-
-  Number of mentions of the system on websites, measured as number of results in search engines queries. At the moment, we use Google and Bing for this measurement. In order to count only relevant results, we are searching for <system name> together with the term database, e.g. "Oracle" and "database".
-
-  General interest in the system. For this measurement, we use the frequency of searches in Google Trends.
-
-  Frequency of technical discussions about the system. We use the number of related questions and the number of interested users on the well-known IT-related Q&A sites Stack Overflow and DBA Stack Exchange.
-
-  Number of job offers, in which the system is mentioned. We use the number of offers on the leading job search engines Indeed and Simply Hired.
-
-  Number of profiles in professional networks, in which the system is mentioned. We use the internationally most popular professional network LinkedIn.
-
-  Relevance in social networks. We count the number of Twitter (X) tweets, in which the system is mentioned.
-
-  We calculate the popularity value of a system by standardizing and averaging of the individual parameters. These mathematical transformations are made in a way ​​so that the distance of the individual systems is preserved. That means, when system A has twice as large a value in the DB-Engines Ranking as system B, then it is twice as popular when averaged over the individual evaluation criteria.
-
-  In order to eliminate effects caused by changing quantities of the data sources themselves, the popularity score is always a relative value, which should be interpreted in comparison with other systems only.
-
-  The DB-Engines Ranking does not measure the number of installations of the systems, or their use within IT systems. It can be expected, that an increase of the popularity of a system as measured by the DB-Engines Ranking (e.g. in discussions or job offers) precedes a corresponding broad use of the system by a certain time factor. Because of this, the DB-Engines Ranking can act as an early indicator.
-
-  From [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
+* Method of calculating the scores of the DB-Engines Ranking 
+  
+  GO for it here to get more details [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
 
 ### Summary
 
   > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
-  
+
   Kamil Kulig
   
   MongoDB is the most popular database that as not Relational Database. 
@@ -106,9 +87,9 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 
 ## Comparison solution for using Python with MongoDB 
 
-We want to use mongodb for fast prototype, fast deliver, high Developer Experience and use FastAPI asynchronously.
+We want to have integration with Pydantic models, bcs we like Pydantic & FastAPI is based on it.
 
-FastAPI is awesoooome <3
+We would like to try asynchronous option with FastAPI.
 
 We would like to use async framework for better performance & scalability.
 
@@ -133,17 +114,17 @@ We found 4 potential candidates to use them.
 ![star history](assets/star-history.png)
 
 
-PyMongo and Motor are Python drivers.
+**PyMongo** and **Motor** are Python drivers for asynchronous.
 
-MongoEngine and Beanie are ODMs.
+MongoEngine and Beanie are **ODMs**.
 
-Document-Object Mapper (think ORM Object–Relational Mapping, but for document databases).
+**Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
 
-PyMongo and MongoEngine out - no asynchronous support.
+**PyMongo** and **MongoEngine** out - no asynchronous support.
 
 For enter easier in MongoDB world & hype about tool we decide to use Beanie.
 
-Beanie ODM - object-document mapper for MongoDB. Data models are based on Pydantic. 
+**Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
 
 <!-- how many of use like Pydantic -->
 
@@ -152,7 +133,6 @@ Pydantic for the win.
 Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 ![beanie dependency](assets/beanie-dependency.png)
-
 
 
 ## Reference
@@ -436,7 +416,7 @@ from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
 
 
-async def database_init(document_models: list[Document], clear_database:bool = False) -> None:
+async def database_init(document_models: list[Document], clear_database: bool = False) -> None:
     # Create Motor client
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 
@@ -607,8 +587,6 @@ class PriorityType(IntEnum):
 from enum import IntEnum
 from typing import Optional
 from pydantic import BaseModel
-import os
-
 from asyncio import run
 from beanie import Document
 
