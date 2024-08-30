@@ -97,6 +97,7 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 ### Summary
 
   > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+  
   Kamil Kulig
   
   MongoDB is the most popular database that as not Relational Database. 
@@ -433,16 +434,16 @@ import os
 from asyncio import run
 from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
-from src.models import Task, User
 
-async def database_init(document_models: list[Document], clear_database: False) -> None:
+
+async def database_init(document_models: list[Document], clear_database:bool = False) -> None:
     # Create Motor client
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 
     # Initialize beanie with the Sample document class and a database
     await init_beanie(
         database=client.workshop,
-        document_models=,
+        document_models=document_models,
         multiprocessing_mode=True,
     )
     # To drop database - for easier iterate and test.

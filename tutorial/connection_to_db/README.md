@@ -26,16 +26,16 @@ import os
 from asyncio import run
 from beanie import Document, init_beanie
 from motor.motor_asyncio import AsyncIOMotorClient
-from src.models import Task, User
 
-async def database_init(document_models: list[Document], clear_database: False) -> None:
+
+async def database_init(document_models: list[Document], clear_database:bool = False) -> None:
     # Create Motor client
     client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 
     # Initialize beanie with the Sample document class and a database
     await init_beanie(
         database=client.workshop,
-        document_models=,
+        document_models=document_models,
         multiprocessing_mode=True,
     )
     # To drop database - for easier iterate and test.
