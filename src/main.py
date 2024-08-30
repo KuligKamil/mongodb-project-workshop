@@ -5,7 +5,7 @@ from models import Task, User
 
 
 async def init():
-    await database_init()
+    await database_init(document_models=[User, Task], clean_database=True)
     users = [
         User(
             name="Adam",

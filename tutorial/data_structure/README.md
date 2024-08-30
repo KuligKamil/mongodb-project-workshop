@@ -1,8 +1,8 @@
-```python 
-import os
+```python
+from src.database_connection import database_init
+from asyncio import run
+from beanie import Document
 
-from beanie import Document, init_beanie
-from motor.motor_asyncio import AsyncIOMotorClient
 
 class User(Document):
     name: str
@@ -10,13 +10,7 @@ class User(Document):
     email: str
 
 
-
-client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
-await init_beanie(
-    database=client.workshop,
-    document_models=[User],
-    multiprocessing_mode=True,
-)
+run(database_init(document_models=[User]))
 ```
 
 Do you see Schema in Atlas?
@@ -31,8 +25,7 @@ hot_adam = User(name="Adam", surname="Brzyzek", email="hotadam@gmail.com")
 hot_adam
 ```
 
-Result
-
+Output
 ```python
 User(id=None, revision_id=None, name='Adam', surname='Brzyzek', email='hotadam@gmail.com')
 ```
@@ -94,8 +87,7 @@ await User.insert(hot_adam)
 hot_adam.model_dump()
 ```
 
-Result 
-
+Output
 ```python 
 {'id': '66cb3c4631b062a669d4357c',
  'name': 'Adam',
@@ -118,7 +110,7 @@ Get all users in database
 users = await User.find().to_list()
 ```
 
-Get all users in database
+Get first user in database
 
 ```python
 result = await User.find().first_or_none()
@@ -137,6 +129,8 @@ adams = await User.find(User.name == "Adam").to_list()
 example of priority type
 
 ```python
+from enum import IntEnum
+
 
 class PriorityType(IntEnum):
     low = 1
@@ -144,24 +138,16 @@ class PriorityType(IntEnum):
     urgent = 3
 ```
 
-To drop database - for easier iterate and test.
-
-```python
-client.drop_database(name_or_database=client.workshop)
-```
 
 <details><summary><b><i>Solution</i></b></summary>
 
 ```python
-
 from enum import IntEnum
 from typing import Optional
-from beanie import Document
 from pydantic import BaseModel
-import os
+from asyncio import run
+from beanie import Document
 
-from beanie import init_beanie
-from motor.motor_asyncio import AsyncIOMotorClient
 
 class PriorityType(IntEnum):
     low = 1
@@ -200,14 +186,7 @@ class User(Document):
     recently_tasks: Optional[Task] = None
 
 
-client = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
-
-await init_beanie(
-    database=client.workshop,
-    document_models=[User, Task],
-    multiprocessing_mode=True,
-)
-client.drop_database(name_or_database=client.workshop)
+run(database_init(document_models=[User, Task]))
 ```
 
 </details>
@@ -219,6 +198,8 @@ For example we can add technical attribute if user is active and reuse it in the
 
 
 ```python
+from pydantic import BaseModel
+from beanie import Document
 
 class Active(BaseModel):
   active: bool = True
@@ -237,8 +218,7 @@ hot_adam = User(
 hot_adam.model_dump()
 ```
 
-Result
-
+Output
 ```python
 {'active': True,
  'id': None,
@@ -261,6 +241,11 @@ Link to documentation for MongoDB - Embedding MongoDB
 Example Embedded Document - User Address
 
 ```python
+from pydantic import BaseModel
+from beanie import Document
+from typing import Optional
+
+
 class Address(BaseModel):
     country: str
     city: str
@@ -300,6 +285,11 @@ Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://
 <details><summary><b><i>Solution</i></b></summary>
 
 ```python
+from pydantic import BaseModel
+from beanie import Document
+from typing import Optional
+from datatime import datetime
+
 
 class Date(BaseModel):
     create_date: datetime = datetime.now()
@@ -331,7 +321,13 @@ The document can contain links to other documents in their fields.
 Example add link Task to User
 
 
-```python 
+```python
+from asyncio import run
+from pydantic import BaseModel
+from beanie import Document
+from typing import Optional
+
+
 User = ForwardRef("User")
 
 class Task(Document, Date, Active):
@@ -346,14 +342,15 @@ class User(Document, Date, Active):
     address: Optional[Address] = None
     recently_tasks: Optional[list[Task]] = []
 
-# initialize collection & clear database
+
+run(database_init(document_models=[User, Task], clear_database=True))
 
 hot_adam = User(name="Adam",surname="Brzyzek",email="hotbrzyzek@gmail.com")
 
 await User.insert(hot_adam)
 
 tasks = [
-    Task(name="sail", user=hot_adam.id),
+    Task(name="sail", user=hot_adam.id), # TODO: CHECK IF IT WORKING with hot_adam without id
     Task(name="drink beers", user=hot_adam.id),
 ]
 await Task.insert_many(tasks)
@@ -397,9 +394,8 @@ user = await User.find(User.name == "Adam").first_or_none()
 user = await user.set({User.name: "John"})
 user.model_dump()
 ```
-
-Result 
-
+ 
+Output
 ```python
 {'id': '66cbc95d9721746de2ec9ee6',
  'name': 'John',
@@ -442,6 +438,13 @@ class UserBasicInfo(BaseModel):
 
 
 adams = await User.find(User.name == "Adam").project(UserBasicInfo).to_list()
+adams
+```
+
+Output
+```python
+[]
+
 ```
 
 * Settings

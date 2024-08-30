@@ -19,3 +19,4 @@ DBaaS(Database as a Service) is a service that allows to set up, deploy and scal
 ![image](./assets/6-Atlas.png)
 6. Now create a user for your database.
 ![image](./assets/7-Atlas.png)
+ATTENTION! Save password for user!

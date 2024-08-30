@@ -1,6 +1,6 @@
 ## Introduction
 
-Adam Brzyzek - Junior Backed Developer
+Adam Brzyzek - Junior Backend Developer
 
 github: https://github.com/ABrzyzek
 
@@ -8,7 +8,7 @@ linkedin: https://www.linkedin.com/in/adam-brzyzek/
 
 discord: brzyzu
 
-
+---
 
 Kamil Kulig - Backend Developer
 
