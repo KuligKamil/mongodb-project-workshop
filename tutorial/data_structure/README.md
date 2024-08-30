@@ -182,9 +182,6 @@ class User(Document):
     name: str
     surname: str
     email: str
-    address: Optional[Address] = None
-    recently_tasks: Optional[Task] = None
-
 
 run(database_init(document_models=[User, Task]))
 ```
