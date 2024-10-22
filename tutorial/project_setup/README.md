@@ -1,5 +1,6 @@
 ## Project Setup
-### Please README in preview mode or on Github 👀
+### Please READ ME in preview mode or on Github 👀
+### We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬
 
 1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
    
