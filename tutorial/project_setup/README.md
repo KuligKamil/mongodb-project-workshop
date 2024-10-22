@@ -1,4 +1,5 @@
 ## Project Setup
+### Please README in preview mode or on Github 👀
 
 1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
    
