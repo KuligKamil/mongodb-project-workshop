@@ -148,6 +148,8 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 
 ## Project Setup
+### Please READ ME in preview mode or on Github 👀
+### We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬
 
 1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
    
@@ -624,9 +626,6 @@ class User(Document):
     name: str
     surname: str
     email: str
-    address: Optional[Address] = None
-    recently_tasks: Optional[Task] = None
-
 
 run(database_init(document_models=[User, Task]))
 ```
@@ -720,8 +719,8 @@ Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://
 
 
 ### Exercise 2 - create Embedded Document & extend Document
-* add to User Document recently task added by user
-* add extend tables with technical tables like active, create_data & update_data
+* add to User Document recent tasks, added by user
+* add extend classes with technical fields like active, create_date & update_date
 * add one user & one task
 
 <details><summary><b><i>Solution</i></b></summary>
@@ -730,7 +729,7 @@ Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://
 from pydantic import BaseModel
 from beanie import Document
 from typing import Optional
-from datatime import datetime
+from datetime import datetime
 
 
 class Date(BaseModel):
