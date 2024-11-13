@@ -51,6 +51,10 @@ import inspect
 from beanie import Document
 from pydantic import BaseModel
 
+class User(Document):
+    pass
+
+assert issubclass(User, BaseModel)
 
 inspect.getmro(Document)
 ```
@@ -74,11 +78,12 @@ pydantic + beanie = ❤️
 
 when we would like to create application 
 
-we want to create for users
+we want to create it for users
 
 that why our first class will be user
 
 Example in User class in pydantic
+<!-- as who if any person on the audience don't  -->
 
 ```python 
 from pydantic import BaseModel
@@ -103,7 +108,7 @@ class User(Document):
 ```
 
 
-if you run code above, you will see error message 'CollectionWasNotInitialized'.
+if you run code above, you will see error message `CollectionWasNotInitialized`.
 To Initialized collection need to use init_beanie function.
 
 

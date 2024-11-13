@@ -14,4 +14,4 @@ async def database_init(
         multiprocessing_mode=True,
     )
     if clean_database:
-        client.drop_database(name_or_database=client.workshop)
+        await client.drop_database(name_or_database=client.workshop)

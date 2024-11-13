@@ -121,6 +121,11 @@ Filters Adams
 ```python
 adams = await User.find(User.name == "Adam").to_list()
 ```
+**⚠️ Please READ ME in preview mode or on Github 👀**
+
+**⚠️ We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬**
+
+**⚠️ use main.py as your playground**
 
 ### Exercise 1 - Create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)

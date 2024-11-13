@@ -1,5 +1,5 @@
-# PyConPL'24 Gliwice 
-
+# PyCon Sweden 2024
+<s>PyConPL'24  Gliwice</s>
 
 ![repo qr code](assets/repo.png)
 
@@ -85,19 +85,38 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 
   Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.
 
-## Comparison solution for using Python with MongoDB 
+## Comparison Python tools for MongoDB 
 
-We want to have integration with Pydantic models, bcs we like Pydantic & FastAPI is based on it.
+### Integration with **Pydantic** & **FastAPI**
 
-We would like to try asynchronous option with FastAPI.
 
-We would like to use async framework for better performance & scalability.
+  **Pydantic: Powerful Data Validation Made Easy**
 
-But remember when you need to use async framework.
+* Define Data Models with Type Hints: Simplifies data structure definitions.
+* Automatic Validation: Ensures data matches specified types and converts compatible types.
+* Clear Error Messages: Highlights issues when data doesn’t fit the model.
+[https://docs.pydantic.dev/latest/](https://docs.pydantic.dev/latest/)
+
+
+**FastAPI: Modern, Fast Web Framework for APIs**
+
+- **High Performance**: Built on ASGI, optimized for speed and scalability.
+- **Automatic Validation**: Pydantic-based data validation ensures data integrity with minimal code.
+- **Interactive Documentation**: Generates Swagger and ReDoc docs automatically for easy testing and exploration.
+- **Developer-Friendly**: Simple syntax with type hints, async support, and dependency injection, ideal for rapid development.
+
+### Use **asynchronouse option** with FastAPI
+ For better performance & scalability. 
+ 
+ But remember when you need to use async framework...
 
 ![asset/async.png](assets/async.png)
 
+
 We found 4 potential candidates to use them. 
+
+![asset/async.png](assets/cat-cat-meme.gif)
+
 
 * pymongo [https://github.com/mongodb/mongo-python-driver](https://github.com/mongodb/mongo-python-driver)
   
@@ -114,21 +133,43 @@ We found 4 potential candidates to use them.
 ![star history](assets/star-history.png)
 
 
-**PyMongo** and **Motor** are Python drivers for asynchronous.
-
-MongoEngine and Beanie are **ODMs**.
-
+**PyMongo** and **MongoEngine** out - no asynchronous support.
+**Motor** and **Beanie** are Python drivers support asynchronous. 
+<!-- TODO: double check, table with frameworks -->
+tool PyMongo MongoEngine Motor Beanie
+support async
+support pydantic
+ODM?
+**driver vs ODM**
+**Driver** give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
 
-**PyMongo** and **MongoEngine** out - no asynchronous support.
+| Feature                | **Driver**                        | **ODM**                            |
+| ---------------------- | --------------------------------- | ---------------------------------- |
+| **Level**              | Low-level                         | High-level                         |
+| **Control**            | More control, manual queries      | Less control, auto-mapped objects  |
+| **Abstraction**        | Minimal                           | High, object-oriented              |
+| **Schema Enforcement** | None, or manual                   | Schema defined in code             |
+| **Best For**           | Performance, fine-grained control | Rapid development, maintainability |
+
+
+| tool | type  | support Pydantic | support async |
+| ------------ |   :---:    |   :---:    |   :---:    |
+| PyMongo | driver | ❌  | ❌ |
+| Mongo Engine | ODM  |  ❌  | ❌ |
+| Motor | driver  |  ❌  | ✅ |
+| Beanie | ODM  |  ✅  | ✅ |
+
+
+
 
 For enter easier in MongoDB world & hype about tool we decide to use Beanie.
 
 **Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
 
-<!-- how many of use like Pydantic -->
+<!-- TODO: ASK how many of use like Pydantic -->
 
-Pydantic for the win.
+<!-- Pydantic for the win. -->
 
 Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
@@ -136,6 +177,8 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 
 ## Reference
+* If you want learn more about async in Python. Recommend course from Lukasz Langa [https://www.youtube.com/watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB](https://www.youtube.com/watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB)
+
 * Does MongoEngine support asynchronous drivers (Motor, TxMongo)? [https://mongoengine-odm.readthedocs.io/faq.html?highlight=async](https://mongoengine-odm.readthedocs.io/faq.html?highlight=async)
 
 * Showing wrapping of beanie motor [https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code](https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code)
@@ -330,6 +373,10 @@ import inspect
 from beanie import Document
 from pydantic import BaseModel
 
+class User(Document):
+    pass
+
+assert issubclass(User, BaseModel)
 
 inspect.getmro(Document)
 ```
@@ -353,11 +400,12 @@ pydantic + beanie = ❤️
 
 when we would like to create application 
 
-we want to create for users
+we want to create it for users
 
 that why our first class will be user
 
 Example in User class in pydantic
+<!-- as who if any person on the audience don't  -->
 
 ```python 
 from pydantic import BaseModel
@@ -382,7 +430,7 @@ class User(Document):
 ```
 
 
-if you run code above, you will see error message 'CollectionWasNotInitialized'.
+if you run code above, you will see error message `CollectionWasNotInitialized`.
 To Initialized collection need to use init_beanie function.
 
 
@@ -565,6 +613,11 @@ Filters Adams
 ```python
 adams = await User.find(User.name == "Adam").to_list()
 ```
+**⚠️ Please READ ME in preview mode or on Github 👀**
+
+**⚠️ We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬**
+
+**⚠️ use main.py as your playground**
 
 ### Exercise 1 - Create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
