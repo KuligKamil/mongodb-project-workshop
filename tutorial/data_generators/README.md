@@ -11,7 +11,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
+***Exercise 5*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
 
 ```python
 from collections.abc import Generator
@@ -42,7 +42,7 @@ fake.seed(2137)
 print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
-<details><summary><b><i>Solution to Exercise 1</i></b></summary>
+<details><summary><b><i>Solution to Exercise 5</i></b></summary>
 
 ```python
 from collections.abc import Generator
@@ -81,7 +81,7 @@ print(list(user_generator(fake=fake, number_of_iterations=10)))
 
 </details>
 
-***Exercise 2*** - *Using created generator in exercise 1 create async main function that will generate 50 users and save them to your database.*
+***Exercise 6*** - *Using created generator in exercise 5 create async main function that will generate 50 users and save them to your database.*
 
 ```python
 from asyncio import run
@@ -96,7 +96,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 2</i></b></summary>
+<details><summary><b><i>Solution to Exercise 6</i></b></summary>
 
 ```python
 from asyncio import run
@@ -120,7 +120,7 @@ run(main())
 </details>
 
 
-***Exercise 3*** - *Create a generator that will return the number of Tasks for each User.*
+***Exercise 7*** - *Create a generator that will return the number of Tasks for each User.*
 
 ```python
 def task_generator(
@@ -130,7 +130,7 @@ def task_generator(
 ```
 
 
-<details><summary><b><i>Solution to Exercise 3</i></b></summary>
+<details><summary><b><i>Solution to Exercise 7</i></b></summary>
 
 ```python
 from datetime import date
@@ -159,7 +159,7 @@ def task_generator(
 
 </details>
 
-***Exercise 4*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
+***Exercise 8*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
 
 ```python
 from beanie.operators import In
@@ -173,7 +173,7 @@ run(main())
 ```
 
 
-<details><summary><b><i>Solution to Exercise 4</i></b></summary>
+<details><summary><b><i>Solution to Exercise 8</i></b></summary>
 
 ```python
 from beanie.operators import In
@@ -200,7 +200,7 @@ run(main())
 </details>
 
 
-***Exercise 5*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
+***Exercise 9*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
 
 ```python
 from pymongo import DESCENDING
@@ -217,7 +217,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 5</i></b></summary>
+<details><summary><b><i>Solution to Exercise 9</i></b></summary>
 
 ```python
 from pymongo import DESCENDING

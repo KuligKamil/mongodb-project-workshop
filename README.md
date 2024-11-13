@@ -966,7 +966,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
+***Exercise 5*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
 
 ```python
 from collections.abc import Generator
@@ -997,7 +997,7 @@ fake.seed(2137)
 print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
-<details><summary><b><i>Solution to Exercise 1</i></b></summary>
+<details><summary><b><i>Solution to Exercise 5</i></b></summary>
 
 ```python
 from collections.abc import Generator
@@ -1036,7 +1036,7 @@ print(list(user_generator(fake=fake, number_of_iterations=10)))
 
 </details>
 
-***Exercise 2*** - *Using created generator in exercise 1 create async main function that will generate 50 users and save them to your database.*
+***Exercise 6*** - *Using created generator in exercise 5 create async main function that will generate 50 users and save them to your database.*
 
 ```python
 from asyncio import run
@@ -1051,7 +1051,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 2</i></b></summary>
+<details><summary><b><i>Solution to Exercise 6</i></b></summary>
 
 ```python
 from asyncio import run
@@ -1075,7 +1075,7 @@ run(main())
 </details>
 
 
-***Exercise 3*** - *Create a generator that will return the number of Tasks for each User.*
+***Exercise 7*** - *Create a generator that will return the number of Tasks for each User.*
 
 ```python
 def task_generator(
@@ -1085,7 +1085,7 @@ def task_generator(
 ```
 
 
-<details><summary><b><i>Solution to Exercise 3</i></b></summary>
+<details><summary><b><i>Solution to Exercise 7</i></b></summary>
 
 ```python
 from datetime import date
@@ -1114,7 +1114,7 @@ def task_generator(
 
 </details>
 
-***Exercise 4*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
+***Exercise 8*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
 
 ```python
 from beanie.operators import In
@@ -1128,7 +1128,7 @@ run(main())
 ```
 
 
-<details><summary><b><i>Solution to Exercise 4</i></b></summary>
+<details><summary><b><i>Solution to Exercise 8</i></b></summary>
 
 ```python
 from beanie.operators import In
@@ -1155,7 +1155,7 @@ run(main())
 </details>
 
 
-***Exercise 5*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
+***Exercise 9*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
 
 ```python
 from pymongo import DESCENDING
@@ -1172,7 +1172,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 5</i></b></summary>
+<details><summary><b><i>Solution to Exercise 9</i></b></summary>
 
 ```python
 from pymongo import DESCENDING
@@ -1244,11 +1244,11 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 
 *Let's create some queries in MongoDb Altas.*
 
-***Exercise 1*** - Search for user with id. 
+**Exercise 10** - Search for user with id. 
 
 *`HINT`: BSON object to contain id in mongo db is `ObjectId()`.*
 
-<details><summary><b><i>Solution to Exercise 1.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 10.</i></b></summary>
 
 ```JavaScript
 {_id: ObjectId("66cb3940ad0f1a3e611edd3b")}
@@ -1256,9 +1256,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 2*** - Search for user which surname is `Olko`.
+**Exercise 11** - Search for user which surname is `Olko`.
 
-<details><summary><b><i>Solution to Exercise 2.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 11.</i></b></summary>
 
 ```JavaScript
 {surname: "Olko"}
@@ -1266,9 +1266,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 3*** - Search for users whose city address is `Warszawa`.
+**Exercise 12** - Search for users whose city address is `Warszawa`.
 
-<details><summary><b><i>Solution to Exercise 3.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 12.</i></b></summary>
 
 ```JavaScript
 {"address.city": "Warszawa"}
@@ -1276,9 +1276,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 4*** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
+**Exercise 13** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
 
-<details><summary><b><i>Solution to Exercise 4.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 13.</i></b></summary>
 
 ```JavaScript
 {"name": {$in: ["Krzysztof", "Nicole", "Angelika"]}}
@@ -1289,11 +1289,11 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 5*** - Search for tasks whose priority is `low` or status is `Review`. 
+**Exercise 14** - Search for tasks whose priority is `low` or status is `Review`. 
 
 *`HINT`: Priority int enum for `low is 1` and status int enum for `Review is 5`.*
 
-<details><summary><b><i>Solution to Exercise 5.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 14.</i></b></summary>
 
 ```JavaScript
 {$or: [{priority: 1}, {status: 5}]}
@@ -1301,11 +1301,11 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 6*** - Search for all active tasks whose creation date is after `2024-07-18`.
+**Exercise 15*** - Search for all active tasks whose creation date is after `2024-07-18`.
 
 *`HINT`: BSON object for date in mongo db is `ISODate()`.*
 
-<details><summary><b><i>Solution to Exercise 6.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 15.</i></b></summary>
 
 ```JavaScript
 {active: true, create_date: {$gt: ISODate("2024-07-18")}}
