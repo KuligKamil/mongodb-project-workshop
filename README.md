@@ -167,10 +167,6 @@ For enter easier in MongoDB world & hype about tool we decide to use Beanie.
 
 **Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
 
-<!-- TODO: ASK how many of use like Pydantic -->
-
-<!-- Pydantic for the win. -->
-
 Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 ![beanie dependency](assets/beanie-dependency.png)
@@ -405,7 +401,6 @@ we want to create it for users
 that why our first class will be user
 
 Example in User class in pydantic
-<!-- as who if any person on the audience don't  -->
 
 ```python 
 from pydantic import BaseModel

@@ -83,7 +83,6 @@ we want to create it for users
 that why our first class will be user
 
 Example in User class in pydantic
-<!-- as who if any person on the audience don't  -->
 
 ```python 
 from pydantic import BaseModel
