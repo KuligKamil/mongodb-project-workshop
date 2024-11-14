@@ -1,5 +1,4 @@
 # PyCon Sweden 2024
-<s>PyConPL'24  Gliwice</s>
 
 ![repo qr code](assets/repo.png)
 
@@ -32,6 +31,8 @@ Classified as a NoSQL database product, MongoDB utilizes JSON-like documents wit
 
 ## Why Mongodb
 
+// a może zacząć od powodów typu dlaczego przechodzi się z danych tabelarycznych na jsonowe, a nie że Wam się nudzi w pracy xD Jakieś dobre story by się przydało
+
 "If you can’t explain it to a six-year-old, you don’t understand it yourself" 
 * Rule ABC
 * MongoDB Popularity
@@ -49,6 +50,8 @@ We never use commercially use MongoDB or NoSQL Database.
 We always use Relational Databases. Mostly PostgreSQL.
 
 We want to try something new.
+
+// Za dużo dramy + ABC możnaby dać na końcu
 
 
 ### MongoDB Popularity
@@ -75,19 +78,8 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
   
   GO for it here to get more details [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
 
-### Summary
 
-  > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
-
-  Kamil Kulig
-  
-  MongoDB is the most popular database that as not Relational Database. 
-
-  Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.
-
-## Comparison Python tools for MongoDB 
-
-### Integration with **Pydantic** & **FastAPI**
+## Integration with **Pydantic** & **FastAPI**
 
 
   **Pydantic: Powerful Data Validation Made Easy**
@@ -112,7 +104,7 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
 
 ![asset/async.png](assets/async.png)
 
-
+## Comparison Python tools for MongoDB 
 We found 4 potential candidates to use them. 
 
 ![asset/async.png](assets/cat-cat-meme.gif)
@@ -132,17 +124,11 @@ We found 4 potential candidates to use them.
 
 ![star history](assets/star-history.png)
 
+### Connection methods - driver vs ODM
 
-**PyMongo** and **MongoEngine** out - no asynchronous support.
-**Motor** and **Beanie** are Python drivers support asynchronous. 
-<!-- TODO: double check, table with frameworks -->
-tool PyMongo MongoEngine Motor Beanie
-support async
-support pydantic
-ODM?
-**driver vs ODM**
-**Driver** give basic connection & basic options.
+**Driver** - give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
+
 
 | Feature                | **Driver**                        | **ODM**                            |
 | ---------------------- | --------------------------------- | ---------------------------------- |
@@ -153,6 +139,17 @@ ODM?
 | **Best For**           | Performance, fine-grained control | Rapid development, maintainability |
 
 
+
+
+**PyMongo** and **MongoEngine** out - no asynchronous support. <br>
+**Motor** and **Beanie** are Python drivers support asynchronous. <br>
+<!-- TODO: double check, table with frameworks --> 
+Tool PyMongo MongoEngine Motor Beanie:
+support async
+support pydantic
+ODM? ?????? o co chodzi w tym zdaniu?? 
+<h3>Requirements for our project: support for Pydantic and async functions</h3>
+
 | tool | type  | support Pydantic | support async |
 | ------------ |   :---:    |   :---:    |   :---:    |
 | PyMongo | driver | ❌  | ❌ |
@@ -161,9 +158,9 @@ ODM?
 | Beanie | ODM  |  ✅  | ✅ |
 
 
+<br>
 
-
-For enter easier in MongoDB world & hype about tool we decide to use Beanie.
+For enter easier in MongoDB world & hype about tool we decide to use **Beanie**.
 
 **Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
 
@@ -194,32 +191,16 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
    
 2. Next go to the `mongodb-project-workshop` directory
 
-3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
+3. Ensure you are using **Python version 3.11** **or higher.** We are using Python 3.11.9 for our project.<br>
+  _HINT: if you need to manage multiple versions of Python we recommend to use `pyenv`_
 
-<aside>
-  HINT: if you need to manage multiple versions of Python 
-    
-  we recommend to use `pyenv` & `pyenv virtualenv`
-  
-  [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
-  
-  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
-
-  For example:
-
-  `pyenv install 3.11.9`
-
-  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
-
-  `pyenv local mongo-project-workshop-3.11.9`
-
-</aside> 
-
-4. Setup environment. 
+4. Setup environment.
   
 <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)<br>
+  OR ff you're using pyenv, you can use `pyenv virtualenv`<br>
+  OR you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
 
   <details>
   <summary>how to use pdm</summary>
@@ -241,8 +222,22 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
   </details>
 </aside>
 
- you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
- 
+
+  <details>
+  <summary>how to use pyenv virtualenv</summary>
+  [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+  
+  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+
+  For example:
+
+  `pyenv install 3.11.9`
+
+  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
+
+  `pyenv local mongo-project-workshop-3.11.9`
+
+  </details>
 
   <details>
   <summary>how to use `venv`</summary>
@@ -278,13 +273,7 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 5. Create file with environment variables `.envrc` file or `.env` file
 
-<aside>
 💡We recommend to use `direnv`  https://direnv.net/
-
-* Load [12factor apps](https://12factor.net/) environment variables
-* Create per-project isolated development environments
-* Load secrets for deployment
-</aside>
 
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
 * Set the `PYTHONPATH` variable in `.envrc` to your project path
@@ -394,11 +383,16 @@ pydantic + beanie = ❤️
 
 ### How use Document
 
+Once upon a time...
+There was a tiny little beanie...
+
 when we would like to create application 
 
 we want to create it for users
 
 that why our first class will be user
+
+// JAK PISZEMY ZDANIA A NIE WIERSZE TO ZACZYNA Z WIELKIEJ LITERY, A KOŃCZYMY KROPKĄ.
 
 Example in User class in pydantic
 
