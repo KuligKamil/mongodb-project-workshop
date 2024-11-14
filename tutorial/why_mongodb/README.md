@@ -6,13 +6,15 @@
 
 ### What is the meaning - "it's easy to do MVP"?
 
-**Flexibly, Easy to Adaapt & Fast**
+**Flexibly, Easy to Adapt & Fast**
 
 This 3 reason when we would like shift from Tabular to JSON-Based Data
 
-Flexibility: JSON allows complex, nested data without rigid schemas.
-Adaptability: Easier to update and evolve data models as requirements change.
-Speed: Avoids time-consuming schema migrations needed in relational databases.  
+**Flexibility**: JSON allows complex, nested data without rigid schemas.
+
+**Adaptability**: Easier to update and evolve data models as requirements change.
+
+**Speed**: Avoids time-consuming schema migrations needed in relational databases.  
 
 
 ### MongoDB Popularity
@@ -40,9 +42,7 @@ MongoDB is the most popular database that as not Relational Database. Prove from
   GO for it here to get more details [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
 
 
-### Rule ABC
-
-<!-- who know what is ABC?  -->
+### Rule ABC - Motivation
 
 Always Be Curious! 
 
@@ -52,10 +52,14 @@ We always use Relational Databases. Mostly PostgreSQL.
 
 We want to try something new.
 
-> If you can’t explain it to a six-year-old, you don’t understand it yourself
 
+> If you can’t explain it to a six-year-old, you don’t understand it yourself.
 Not sure who
 
-> The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
 
+> You don't have to be an expert, just know more than the person learning from you.
+Not sure who
+
+
+> The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
 Kamil Kulig
