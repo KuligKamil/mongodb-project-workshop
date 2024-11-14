@@ -1,6 +1,6 @@
 ## Why Mongodb
 
-* Rumors that it's easy to do MVP
+* Rumors that it's easy to do MVP (Minimum Viable Product)
 * MongoDB Popularity
 * Rule ABC
 

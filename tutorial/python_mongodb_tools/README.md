@@ -1,9 +1,12 @@
 ## Comparison Python tools for MongoDB 
 
+To find the ideal Python tool for MongoDB, we focused on specific criteria: seamless integration with Pydantic and FastAPI, a robust ODM, and support for asynchronous operations with FastAPI.
+
+
 ### Integration with **Pydantic** & **FastAPI**
 
 
-  **Pydantic: Powerful Data Validation Made Easy**
+**Pydantic: Powerful Data Validation Made Easy**
 
 * Define Data Models with Type Hints: Simplifies data structure definitions.
 * Automatic Validation: Ensures data matches specified types and converts compatible types.
@@ -48,11 +51,8 @@ We found 4 potential candidates to use them.
 
 **PyMongo** and **MongoEngine** out - no asynchronous support.
 **Motor** and **Beanie** are Python drivers support asynchronous. 
-<!-- TODO: double check, table with frameworks -->
-tool PyMongo MongoEngine Motor Beanie
-support async
-support pydantic
-ODM?
+
+
 **driver vs ODM**
 **Driver** give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).

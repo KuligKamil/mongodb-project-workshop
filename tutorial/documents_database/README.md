@@ -76,13 +76,9 @@ pydantic + beanie = ❤️
 
 ### How use Document
 
-when we would like to create application 
+Imagine that we're creating an MVP for an application. Since we want to design it with users in mind, our first class will represent a User.
 
-we want to create it for users
-
-that why our first class will be user
-
-Example in User class in pydantic
+Here's an example of a User class in Pydantic:"
 
 ```python 
 from pydantic import BaseModel
