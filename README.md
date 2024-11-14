@@ -763,7 +763,10 @@ hot_adam = User(
 )
 ```
 
+
 Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9)
+
+No they don't paying us for it. XD
 
 
 ### Exercise 2 - create Embedded Document & extend Document
@@ -875,7 +878,6 @@ For update we have couple options
 * save
 * replace -  throws: - a ValueError if the document does not have an id yet, or - a beanie.exceptions.DocumentNotFound
 * update, set, inc - can be performed on the result of a find or find_one query, or on a document that was returned from an earlier query.
-* set
 * upsert - to insert a document when no documents are matched against the search criteri
 
 ```python
