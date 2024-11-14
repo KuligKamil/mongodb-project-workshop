@@ -1,4 +1,4 @@
-# Tutorial for creating an account in MongoDb Atlas.
+# Tutorial for creating an account in MongoDB Atlas.
 
 MongoDB Atlas is fully managed cloud database that handle all the complexity of:
 deploying, managing, and healing your deployments on the cloud service provider of your choice(AWS, Azure, GCP). With Atlas you can create account and set up database with only few clicks.
@@ -6,7 +6,7 @@ deploying, managing, and healing your deployments on the cloud service provider 
 
 DBaaS(Database as a Service) is a service that allows to set up, deploy and scale database  without worrying about any physical hardware, software updates and details of configuration for performance.
 
-1. Go to the [MongoDb website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
+1. Go to the [MongoDB website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
 ![image](./assets/1-Atlas.png)
 2. Fill your informations and agree for Terms of Service and Privacy Policy. Press **Create your Atlas account** button. You can also use your Google account to create the account.
 ![image](./assets/2-Atlas.png)

@@ -1,5 +1,4 @@
-# PyCon Sweden 2024
-<s>PyConPL'24  Gliwice</s>
+# MongoDB for Beginners - PyCon Sweden 2024 
 
 ![repo qr code](assets/repo.png)
 
@@ -302,7 +301,7 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 ### That’s it! You’re ready to work! 🎉
 
 
-# Tutorial for creating an account in MongoDb Atlas.
+# Tutorial for creating an account in MongoDB Atlas.
 
 MongoDB Atlas is fully managed cloud database that handle all the complexity of:
 deploying, managing, and healing your deployments on the cloud service provider of your choice(AWS, Azure, GCP). With Atlas you can create account and set up database with only few clicks.
@@ -310,7 +309,7 @@ deploying, managing, and healing your deployments on the cloud service provider 
 
 DBaaS(Database as a Service) is a service that allows to set up, deploy and scale database  without worrying about any physical hardware, software updates and details of configuration for performance.
 
-1. Go to the [MongoDb website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
+1. Go to the [MongoDB website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
 ![image](./assets/1-Atlas.png)
 2. Fill your informations and agree for Terms of Service and Privacy Policy. Press **Create your Atlas account** button. You can also use your Google account to create the account.
 ![image](./assets/2-Atlas.png)
@@ -1213,12 +1212,12 @@ async def main():
 
 </details>
 
-# Simple queries in MongoDb Atlas 
+# Simple queries in MongoDB Atlas 
 
-In MongoDb Atlas you can browse data from your database. On the page, you need to select Clusters from the options on the left bar and then press button **`Browse Collection`**. From this level of the page you can see the **filter field** used for query data. You can use all the MongoDB [query operators](https://www.mongodb.com/docs/manual/reference/operator/query/) except the *\$text* and *\$expr* operators.
+In MongoDB Atlas you can browse data from your database. On the page, you need to select Clusters from the options on the left bar and then press button **`Browse Collection`**. From this level of the page you can see the **filter field** used for query data. You can use all the MongoDB [query operators](https://www.mongodb.com/docs/manual/reference/operator/query/) except the *\$text* and *\$expr* operators.
 
 ![image](./assets/atlas-filter.png)
-# Cheat sheet [MongoDb Atlas filter](https://www.mongodb.com/docs/compass/current/query/filter/).
+# Cheat sheet [MongoDB Atlas filter](https://www.mongodb.com/docs/compass/current/query/filter/).
 
 
 Logical:
@@ -1244,7 +1243,7 @@ Type: `{ field: { $type: BSON type } }`
 Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON typeN ] } }`
 
 
-*Let's create some queries in MongoDb Altas.*
+*Let's create some queries in MongoDB Altas.*
 
 **Exercise 10** - Search for user with id. 
 

@@ -1,4 +1,3 @@
-# PyCon Sweden 2024
-<s>PyConPL'24  Gliwice</s>
+# MongoDB for Beginners - PyCon Sweden 2024 
 
 ![repo qr code](assets/repo.png)
