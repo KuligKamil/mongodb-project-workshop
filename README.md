@@ -25,6 +25,7 @@ discord: kamilkulig
 
 
 ## MongoDB Introduction
+
 MongoDB is a source-available, cross-platform, document-oriented database program. 
 
 Classified as a NoSQL database product, MongoDB utilizes JSON-like documents with optional schemas. 
@@ -32,28 +33,24 @@ Classified as a NoSQL database product, MongoDB utilizes JSON-like documents wit
 
 ## Why Mongodb
 
-"If you can’t explain it to a six-year-old, you don’t understand it yourself" 
-* Rule ABC
+* Rumors that it's easy to do MVP
 * MongoDB Popularity
-* Rumors that it's easy to do MVP & have good Developer Experience
-  
+* Rule ABC
 
-### Rule ABC
+### What is the meaning - "it's easy to do MVP"?
 
-<!-- who know what is ABC?  -->
+**Flexibly, Easy to Adaapt & Fast**
 
-Always Be Curious! 
+This 3 reason when we would like shift from Tabular to JSON-Based Data
 
-We never use commercially use MongoDB or NoSQL Database.
-
-We always use Relational Databases. Mostly PostgreSQL.
-
-We want to try something new.
+Flexibility: JSON allows complex, nested data without rigid schemas.
+Adaptability: Easier to update and evolve data models as requirements change.
+Speed: Avoids time-consuming schema migrations needed in relational databases.  
 
 
 ### MongoDB Popularity
 
-For showing popularity MongoDB we will show two source StackOverflow 2024 Survey Developer, DB-Engines Ranking.
+MongoDB is the most popular database that as not Relational Database. Prove from two sources: StackOverflow 2024 Survey Developer, DB-Engines Ranking.
 
 * StackOverflow 2024 Survey Developer - Database Results
 
@@ -75,15 +72,27 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
   
   GO for it here to get more details [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
 
-### Summary
 
-  > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+### Rule ABC
 
-  Kamil Kulig
-  
-  MongoDB is the most popular database that as not Relational Database. 
+<!-- who know what is ABC?  -->
 
-  Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.
+Always Be Curious! 
+
+We never use commercially use MongoDB or NoSQL Database.
+
+We always use Relational Databases. Mostly PostgreSQL.
+
+We want to try something new.
+
+> If you can’t explain it to a six-year-old, you don’t understand it yourself
+
+Not sure who
+
+> The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+
+Kamil Kulig
+
 
 ## Comparison Python tools for MongoDB 
 
