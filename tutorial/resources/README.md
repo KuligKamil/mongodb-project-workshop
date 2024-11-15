@@ -1,6 +1,6 @@
 # Resources
 
-* Documentation for MongDB [https://www.mongodb.com/docs/](https://www.mongodb.com/docs/)
+* Documentation for MongoDB [https://www.mongodb.com/docs/](https://www.mongodb.com/docs/)
 
 * Documentation Beanie [https://beanie-odm.dev/](https://beanie-odm.dev/)
 
