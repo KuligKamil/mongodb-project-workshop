@@ -1,6 +1,6 @@
 from datetime import datetime
-from enum import Enum, IntEnum
-from typing import ClassVar, ForwardRef, Optional
+from enum import IntEnum
+from typing import ForwardRef, Optional
 
 from beanie import Document, Link
 from pydantic import BaseModel

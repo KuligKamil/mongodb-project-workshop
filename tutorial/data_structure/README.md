@@ -121,6 +121,11 @@ Filters Adams
 ```python
 adams = await User.find(User.name == "Adam").to_list()
 ```
+**⚠️ Please READ ME in preview mode or on Github 👀**
+
+**⚠️ We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬**
+
+**⚠️ use main.py as your playground**
 
 ### Exercise 1 - Create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
@@ -271,7 +276,10 @@ hot_adam = User(
 )
 ```
 
+
 Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9)
+
+No they don't paying us for it. XD
 
 
 ### Exercise 2 - create Embedded Document & extend Document
@@ -383,7 +391,6 @@ For update we have couple options
 * save
 * replace -  throws: - a ValueError if the document does not have an id yet, or - a beanie.exceptions.DocumentNotFound
 * update, set, inc - can be performed on the result of a find or find_one query, or on a document that was returned from an earlier query.
-* set
 * upsert - to insert a document when no documents are matched against the search criteri
 
 ```python

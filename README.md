@@ -1,5 +1,4 @@
-# PyConPL'24 Gliwice 
-
+# MongoDB for Beginners - PyCon Sweden 2024 
 
 ![repo qr code](assets/repo.png)
 
@@ -25,6 +24,7 @@ discord: kamilkulig
 
 
 ## MongoDB Introduction
+
 MongoDB is a source-available, cross-platform, document-oriented database program. 
 
 Classified as a NoSQL database product, MongoDB utilizes JSON-like documents with optional schemas. 
@@ -32,28 +32,26 @@ Classified as a NoSQL database product, MongoDB utilizes JSON-like documents wit
 
 ## Why Mongodb
 
-"If you can’t explain it to a six-year-old, you don’t understand it yourself" 
-* Rule ABC
+* Rumors that it's easy to do MVP (Minimum Viable Product)
 * MongoDB Popularity
-* Rumors that it's easy to do MVP & have good Developer Experience
-  
+* Rule ABC
 
-### Rule ABC
+### What is the meaning - "it's easy to do MVP"?
 
-<!-- who know what is ABC?  -->
+**Flexibly, Easy to Adapt & Fast**
 
-Always Be Curious! 
+This 3 reason when we would like shift from Tabular to JSON-Based Data
 
-We never use commercially use MongoDB or NoSQL Database.
+**Flexibility**: JSON allows complex, nested data without rigid schemas.
 
-We always use Relational Databases. Mostly PostgreSQL.
+**Adaptability**: Easier to update and evolve data models as requirements change.
 
-We want to try something new.
+**Speed**: Avoids time-consuming schema migrations needed in relational databases.  
 
 
 ### MongoDB Popularity
 
-For showing popularity MongoDB we will show two source StackOverflow 2024 Survey Developer, DB-Engines Ranking.
+MongoDB is the most popular database that as not Relational Database. Prove from two sources: StackOverflow 2024 Survey Developer, DB-Engines Ranking.
 
 * StackOverflow 2024 Survey Developer - Database Results
 
@@ -75,29 +73,78 @@ For showing popularity MongoDB we will show two source StackOverflow 2024 Survey
   
   GO for it here to get more details [https://db-engines.com/en/ranking_definition](https://db-engines.com/en/ranking_definition)
 
-### Summary
 
-  > The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+### Rule ABC - Motivation
 
-  Kamil Kulig
+Always Be Curious! 
+
+We never use commercially use MongoDB or NoSQL Database.
+
+We always use Relational Databases. Mostly PostgreSQL.
+
+We want to try something new.
+
+
+> If you can’t explain it to a six-year-old, you don’t understand it yourself.
+
+Not sure who
+
+
+> You don't have to be an expert, just know more than the person learning from you.
+
+Not sure who
+
+
+> The best option to learn something new is to create workshop. You have perfect motivation, deadline. 
+
+Kamil Kulig
+
+
+## Comparison Python tools for MongoDB 
+
+To find the ideal Python tool for MongoDB, we focused on specific criteria: seamless integration with Pydantic and FastAPI, a robust ODM, and support for asynchronous operations with FastAPI.
+
+
+### Integration with **Pydantic** & **FastAPI**
+
+
+**Pydantic: Powerful Data Validation Made Easy**
+
+* Powered by type hints — with Pydantic, schema validation and serialization are controlled by type annotations; less to learn, less code to write, and integration with your IDE and static analysis tools.
+* Speed — Pydantic's core validation logic is written in Rust. As a result, Pydantic is among the fastest data validation libraries for Python.
+* JSON Schema — Pydantic models can emit JSON Schema, allowing for easy integration with other tools. 
   
-  MongoDB is the most popular database that as not Relational Database. 
+[https://docs.pydantic.dev/latest/](https://docs.pydantic.dev/latest/)
 
-  Spoiler alert! In our opinion solid database for MVP with pleasant Developer Experience.
 
-## Comparison solution for using Python with MongoDB 
+**FastAPI: Modern, Fast Web Framework for building APIs**
 
-We want to have integration with Pydantic models, bcs we like Pydantic & FastAPI is based on it.
+* Fast: Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic).
+* Fast to code: Increase the speed to develop features.
+* Intuitive: Great editor support. Completion everywhere. Less time debugging.
+* Easy: Designed to be easy to use and learn. Less time reading docs.
+* Short: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
+* Robust: Get production-ready code. With automatic interactive documentation.
+* Standards-based: Based on (and fully compatible with) the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
+  
 
-We would like to try asynchronous option with FastAPI.
+[https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
-We would like to use async framework for better performance & scalability.
+![Alt text](assets/fastapi-popularity.png)
 
-But remember when you need to use async framework.
+### Use **asynchronouse option** with FastAPI
+
+ For better performance & scalability. 
+ 
+ But remember when you need to use async framework...
 
 ![asset/async.png](assets/async.png)
 
+
 We found 4 potential candidates to use them. 
+
+![asset/async.png](assets/cat-cat-meme.gif)
+
 
 * pymongo [https://github.com/mongodb/mongo-python-driver](https://github.com/mongodb/mongo-python-driver)
   
@@ -114,21 +161,36 @@ We found 4 potential candidates to use them.
 ![star history](assets/star-history.png)
 
 
-**PyMongo** and **Motor** are Python drivers for asynchronous.
-
-MongoEngine and Beanie are **ODMs**.
-
+### **driver vs ODM**
+**Driver** give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
 
-**PyMongo** and **MongoEngine** out - no asynchronous support.
+| Feature                | **Driver**                        | **ODM**                            |
+| ---------------------- | --------------------------------- | ---------------------------------- |
+| **Level**              | Low-level                         | High-level                         |
+| **Control**            | More control, manual queries      | Less control, auto-mapped objects  |
+| **Abstraction**        | Minimal                           | High, object-oriented              |
+| **Schema Enforcement** | None, or manual                   | Schema defined in code             |
+| **Best For**           | Performance, fine-grained control | Rapid development, maintainability |
 
-For enter easier in MongoDB world & hype about tool we decide to use Beanie.
+### Summary Comparison
+
+| tool | type  | support Pydantic | support async |
+| ------------ |   :---:    |   :---:    |   :---:    |
+| PyMongo | driver | ❌  | ❌ |
+| Mongo Engine | ODM  |  ❌  | ❌ |
+| Motor | driver  |  ❌  | ✅ |
+| Beanie | ODM  |  ✅  | ✅ |
+
+
+
+
+
+For enter easier in MongoDB world & hype about tool we decide to use **Beanie**.
+
+
 
 **Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
-
-<!-- how many of use like Pydantic -->
-
-Pydantic for the win.
 
 Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
@@ -136,6 +198,8 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 
 ## Reference
+* If you want learn more about async in Python. Recommend course from Lukasz Langa [https://www.youtube.com/watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB](https://www.youtube.com/watch?v=Xbl7XjFYsN4&list=PLhNSoGM2ik6SIkVGXWBwerucXjgP1rHmB)
+
 * Does MongoEngine support asynchronous drivers (Motor, TxMongo)? [https://mongoengine-odm.readthedocs.io/faq.html?highlight=async](https://mongoengine-odm.readthedocs.io/faq.html?highlight=async)
 
 * Showing wrapping of beanie motor [https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code](https://github.com/search?q=repo%3ABeanieODM%2Fbeanie%20motor&type=code)
@@ -147,43 +211,45 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 * Link for generate star history graph [[Star History Chart](https://api.star-history.com/svg?repos=BeanieODM/beanie,mongodb/mongo-python-driver,mongodb/motor,MongoEngine/mongoengine&type=Date)](https://star-history.com/#BeanieODM/beanie&mongodb/mongo-python-driver&mongodb/motor&MongoEngine/mongoengine&Date) 
 
 
+
 ## Project Setup
 ### Please READ ME in preview mode or on Github 👀
 ### We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬
 
-1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
+1. Fork & Clone the source code
    
 2. Next go to the `mongodb-project-workshop` directory
 
 3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
 
-<aside>
-  HINT: if you need to manage multiple versions of Python 
-    
-  we recommend to use `pyenv` & `pyenv virtualenv`
-  
+
+  HINT: if you need to manage multiple versions of Python we recommend to use **pyenv** 
+
   [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
   
-  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
-
   For example:
 
   `pyenv install 3.11.9`
 
-  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
-
-  `pyenv local mongo-project-workshop-3.11.9`
-
-</aside> 
 
 4. Setup environment. 
   
 <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+  HINT: we recommend to use pyenv virtualenv  with PDM - Python package and dependency manager 
+  
+  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+  
+  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
 
   <details>
-  <summary>how to use pdm</summary>
+  <summary>how to use pyenv virtualenv  & pdm</summary>
+
+  create env named mongo-project-workshop-3.11.9
+
+  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
+  
+  `pyenv local mongo-project-workshop-3.11.9`
 
   install pdm 
 
@@ -197,10 +263,12 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
   `pdm run ruff check` 
 
-  if you see `All checks passed!` everything setup correctly 
+  if you see `All checks passed!` everything setup correctly 🎉
 
   </details>
 </aside>
+
+
 
  you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
@@ -232,29 +300,22 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
   `run ruff check`
 
-  if you see `All checks passed!` everything setup correctly 
+  if you see `All checks passed!` everything setup correctly 🎉
 
   </details>
  
 
 5. Create file with environment variables `.envrc` file or `.env` file
 
-<aside>
-💡We recommend to use `direnv`  https://direnv.net/
-
-* Load [12factor apps](https://12factor.net/) environment variables
-* Create per-project isolated development environments
-* Load secrets for deployment
-</aside>
-
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
 * Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
    in windows [link for tutorial](https://www.youtube.com/watch?v=PXqcHi2fkXI)
-### That’s it! You’re ready to work! 🎉
+
+### That’s it! You’re ready to work! 🎉🎉🎉
 
 
-# Tutorial for creating an account in MongoDb Atlas.
+# Tutorial for creating an account in MongoDB Atlas.
 
 MongoDB Atlas is fully managed cloud database that handle all the complexity of:
 deploying, managing, and healing your deployments on the cloud service provider of your choice(AWS, Azure, GCP). With Atlas you can create account and set up database with only few clicks.
@@ -262,7 +323,7 @@ deploying, managing, and healing your deployments on the cloud service provider 
 
 DBaaS(Database as a Service) is a service that allows to set up, deploy and scale database  without worrying about any physical hardware, software updates and details of configuration for performance.
 
-1. Go to the [MongoDb website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
+1. Go to the [MongoDB website](https://www.mongodb.com/products/platform/atlas-database) and press the button **Try Free**.
 ![image](./assets/1-Atlas.png)
 2. Fill your informations and agree for Terms of Service and Privacy Policy. Press **Create your Atlas account** button. You can also use your Google account to create the account.
 ![image](./assets/2-Atlas.png)
@@ -330,6 +391,10 @@ import inspect
 from beanie import Document
 from pydantic import BaseModel
 
+class User(Document):
+    pass
+
+assert issubclass(User, BaseModel)
 
 inspect.getmro(Document)
 ```
@@ -351,13 +416,9 @@ pydantic + beanie = ❤️
 
 ### How use Document
 
-when we would like to create application 
+Imagine that we're creating an MVP for an application. Since we want to design it with users in mind, our first class will represent a User.
 
-we want to create for users
-
-that why our first class will be user
-
-Example in User class in pydantic
+Here's an example of a User class in Pydantic:"
 
 ```python 
 from pydantic import BaseModel
@@ -382,7 +443,7 @@ class User(Document):
 ```
 
 
-if you run code above, you will see error message 'CollectionWasNotInitialized'.
+if you run code above, you will see error message `CollectionWasNotInitialized`.
 To Initialized collection need to use init_beanie function.
 
 
@@ -565,6 +626,11 @@ Filters Adams
 ```python
 adams = await User.find(User.name == "Adam").to_list()
 ```
+**⚠️ Please READ ME in preview mode or on Github 👀**
+
+**⚠️ We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬**
+
+**⚠️ use main.py as your playground**
 
 ### Exercise 1 - Create Document
 * create document Task with name, description, priority(low, normal, urgent), Size(S, M, L), Status(Backlog, TODO, InProgress, OnHold, Review, Done)
@@ -715,7 +781,10 @@ hot_adam = User(
 )
 ```
 
+
 Our Favorite bar in Gliwice [https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9](https://maps.app.goo.gl/Jscx2wCmkE5cr2ke9)
+
+No they don't paying us for it. XD
 
 
 ### Exercise 2 - create Embedded Document & extend Document
@@ -827,7 +896,6 @@ For update we have couple options
 * save
 * replace -  throws: - a ValueError if the document does not have an id yet, or - a beanie.exceptions.DocumentNotFound
 * update, set, inc - can be performed on the result of a find or find_one query, or on a document that was returned from an earlier query.
-* set
 * upsert - to insert a document when no documents are matched against the search criteri
 
 ```python
@@ -913,7 +981,7 @@ fake = Factory.create(locale="pl_PL")
 fake.seed(2137)
 ```
 
-***Exercise 1*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
+***Exercise 5*** - *Complete the generator that will return the number of User objects determined in advance. Address fields are missing.*
 
 ```python
 from collections.abc import Generator
@@ -944,7 +1012,7 @@ fake.seed(2137)
 print(list(user_generator(fake=fake, number_of_iterations=10)))
 ```
 
-<details><summary><b><i>Solution to Exercise 1</i></b></summary>
+<details><summary><b><i>Solution to Exercise 5</i></b></summary>
 
 ```python
 from collections.abc import Generator
@@ -983,7 +1051,7 @@ print(list(user_generator(fake=fake, number_of_iterations=10)))
 
 </details>
 
-***Exercise 2*** - *Using created generator in exercise 1 create async main function that will generate 50 users and save them to your database.*
+***Exercise 6*** - *Using created generator in exercise 5 create async main function that will generate 50 users and save them to your database.*
 
 ```python
 from asyncio import run
@@ -998,7 +1066,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 2</i></b></summary>
+<details><summary><b><i>Solution to Exercise 6</i></b></summary>
 
 ```python
 from asyncio import run
@@ -1022,7 +1090,7 @@ run(main())
 </details>
 
 
-***Exercise 3*** - *Create a generator that will return the number of Tasks for each User.*
+***Exercise 7*** - *Create a generator that will return the number of Tasks for each User.*
 
 ```python
 def task_generator(
@@ -1032,7 +1100,7 @@ def task_generator(
 ```
 
 
-<details><summary><b><i>Solution to Exercise 3</i></b></summary>
+<details><summary><b><i>Solution to Exercise 7</i></b></summary>
 
 ```python
 from datetime import date
@@ -1061,7 +1129,7 @@ def task_generator(
 
 </details>
 
-***Exercise 4*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
+***Exercise 8*** - *Update the main function for generation 10 tasks for each created User and save them to your database.*
 
 ```python
 from beanie.operators import In
@@ -1075,7 +1143,7 @@ run(main())
 ```
 
 
-<details><summary><b><i>Solution to Exercise 4</i></b></summary>
+<details><summary><b><i>Solution to Exercise 8</i></b></summary>
 
 ```python
 from beanie.operators import In
@@ -1102,7 +1170,7 @@ run(main())
 </details>
 
 
-***Exercise 5*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
+***Exercise 9*** - *Create a function that updates all users and saves their last recent tasks. Also update main function to execute that function and saves last 3 tasks for each user.*
 
 ```python
 from pymongo import DESCENDING
@@ -1119,7 +1187,7 @@ async def main():
 run(main())
 ```
 
-<details><summary><b><i>Solution to Exercise 5</i></b></summary>
+<details><summary><b><i>Solution to Exercise 9</i></b></summary>
 
 ```python
 from pymongo import DESCENDING
@@ -1158,12 +1226,12 @@ async def main():
 
 </details>
 
-# Simple queries in MongoDb Atlas 
+# Simple queries in MongoDB Atlas 
 
-In MongoDb Atlas you can browse data from your database. On the page, you need to select Clusters from the options on the left bar and then press button **`Browse Collection`**. From this level of the page you can see the **filter field** used for query data. You can use all the MongoDB [query operators](https://www.mongodb.com/docs/manual/reference/operator/query/) except the *\$text* and *\$expr* operators.
+In MongoDB Atlas you can browse data from your database. On the page, you need to select Clusters from the options on the left bar and then press button **`Browse Collection`**. From this level of the page you can see the **filter field** used for query data. You can use all the MongoDB [query operators](https://www.mongodb.com/docs/manual/reference/operator/query/) except the *\$text* and *\$expr* operators.
 
 ![image](./assets/atlas-filter.png)
-# Cheat sheet [MongoDb Atlas filter](https://www.mongodb.com/docs/compass/current/query/filter/).
+# Cheat sheet [MongoDB Atlas filter](https://www.mongodb.com/docs/compass/current/query/filter/).
 
 
 Logical:
@@ -1189,13 +1257,13 @@ Type: `{ field: { $type: BSON type } }`
 Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON typeN ] } }`
 
 
-*Let's create some queries in MongoDb Altas.*
+*Let's create some queries in MongoDB Altas.*
 
-***Exercise 1*** - Search for user with id. 
+**Exercise 10** - Search for user with id. 
 
 *`HINT`: BSON object to contain id in mongo db is `ObjectId()`.*
 
-<details><summary><b><i>Solution to Exercise 1.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 10.</i></b></summary>
 
 ```JavaScript
 {_id: ObjectId("66cb3940ad0f1a3e611edd3b")}
@@ -1203,9 +1271,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 2*** - Search for user which surname is `Olko`.
+**Exercise 11** - Search for user which surname is `Olko`.
 
-<details><summary><b><i>Solution to Exercise 2.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 11.</i></b></summary>
 
 ```JavaScript
 {surname: "Olko"}
@@ -1213,9 +1281,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 3*** - Search for users whose city address is `Warszawa`.
+**Exercise 12** - Search for users whose city address is `Warszawa`.
 
-<details><summary><b><i>Solution to Exercise 3.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 12.</i></b></summary>
 
 ```JavaScript
 {"address.city": "Warszawa"}
@@ -1223,9 +1291,9 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 4*** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
+**Exercise 13** - Search for users whose name is `Krzysztof`, `Nicole` or `Angelika`.
 
-<details><summary><b><i>Solution to Exercise 4.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 13.</i></b></summary>
 
 ```JavaScript
 {"name": {$in: ["Krzysztof", "Nicole", "Angelika"]}}
@@ -1236,11 +1304,11 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 5*** - Search for tasks whose priority is `low` or status is `Review`. 
+**Exercise 14** - Search for tasks whose priority is `low` or status is `Review`. 
 
 *`HINT`: Priority int enum for `low is 1` and status int enum for `Review is 5`.*
 
-<details><summary><b><i>Solution to Exercise 5.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 14.</i></b></summary>
 
 ```JavaScript
 {$or: [{priority: 1}, {status: 5}]}
@@ -1248,11 +1316,11 @@ Any of the listed types: `{ field: { $type: [ BSON type1 , BSON type2, ... BSON 
 </details>
 
 
-***Exercise 6*** - Search for all active tasks whose creation date is after `2024-07-18`.
+**Exercise 15*** - Search for all active tasks whose creation date is after `2024-07-18`.
 
 *`HINT`: BSON object for date in mongo db is `ISODate()`.*
 
-<details><summary><b><i>Solution to Exercise 6.</i></b></summary>
+<details><summary><b><i>Solution to Exercise 15.</i></b></summary>
 
 ```JavaScript
 {active: true, create_date: {$gt: ISODate("2024-07-18")}}
@@ -1277,7 +1345,7 @@ Come on. Again?! XD
 
 # Resources
 
-* Documentation for MongDB [https://www.mongodb.com/docs/](https://www.mongodb.com/docs/)
+* Documentation for MongoDB [https://www.mongodb.com/docs/](https://www.mongodb.com/docs/)
 
 * Documentation Beanie [https://beanie-odm.dev/](https://beanie-odm.dev/)
 

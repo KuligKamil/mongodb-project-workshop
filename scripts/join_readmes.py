@@ -28,6 +28,12 @@ for index, tutorial_chapter in enumerate(order):
         os.path.join(f"{project_directory}/tutorial/{tutorial_chapter}", "README.md")
     ) as f:
         temp_text = f.read()
+
+    # check = re.search(r"\`\`\`python(.*?)\`", temp_text)
+    # if check:
+    #     print(check.group(0))
+    # print(check)
+    # print(type(check))
     with open(f"{project_directory}/README.md", "a") as f:
         f.write(f"{ new_line * 2 if index > 0 else ''}{temp_text}")
 
@@ -36,9 +42,9 @@ project_directory = os.getcwd()
 for root, _, files in os.walk(f"{project_directory}/assets"):
     for file in files:
         os.remove(os.path.join(root, file))
-for root, directories, f in os.walk(f"{project_directory}/tutorial"):
+for root, _, f in os.walk(f"{project_directory}/tutorial"):
     for file in f:
-        print(root, directories, f, file)
+        # print(root, _, f, file)
         directory = root.split("/")[-1]
         if directory == "assets":
             shutil.copyfile(
