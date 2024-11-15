@@ -2,21 +2,21 @@
 ### Please READ ME in preview mode or on Github 👀
 ### We kindly recommend to disable Copilot or any similar AI-driven tools for response generation for this workshop. 🤬
 
-1. Clone the source code from the [official GitHub repo for the event](https://github.com/KuligKamil/mongodb-project-workshop)
+1. Fork & Clone the source code
    
 2. Next go to the `mongodb-project-workshop` directory
 
 3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
 
-<aside>
-  HINT: if you need to manage multiple versions of Python we recommend to use `pyenv` 
+
+  HINT: if you need to manage multiple versions of Python we recommend to use **pyenv** 
+
   [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
   
   For example:
 
   `pyenv install 3.11.9`
 
-</aside> 
 
 4. Setup environment. 
   
@@ -27,14 +27,15 @@
   [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
   
   [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
-  
+
   <details>
   <summary>how to use pyenv virtualenv  & pdm</summary>
 
+  create env named mongo-project-workshop-3.11.9
+
   `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
-
+  
   `pyenv local mongo-project-workshop-3.11.9`
-
 
   install pdm 
 
@@ -48,7 +49,7 @@
 
   `pdm run ruff check` 
 
-  if you see `All checks passed!` everything setup correctly 
+  if you see `All checks passed!` everything setup correctly 🎉
 
   </details>
 </aside>
@@ -85,7 +86,7 @@
 
   `run ruff check`
 
-  if you see `All checks passed!` everything setup correctly 
+  if you see `All checks passed!` everything setup correctly 🎉
 
   </details>
  
@@ -97,4 +98,4 @@
    in mac, linux & WSL `export PYTHONPATH=$PWD`
    in windows [link for tutorial](https://www.youtube.com/watch?v=PXqcHi2fkXI)
 
-### That’s it! You’re ready to work! 🎉
+### That’s it! You’re ready to work! 🎉🎉🎉
