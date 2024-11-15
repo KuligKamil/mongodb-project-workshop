@@ -9,21 +9,12 @@
 3. Ensure you are using **Python Version 3.11** **or Higher.** We are using Python 3.11.9 for our project.
 
 <aside>
-  HINT: if you need to manage multiple versions of Python 
-    
-  we recommend to use `pyenv` & `pyenv virtualenv`
-  
+  HINT: if you need to manage multiple versions of Python we recommend to use `pyenv` 
   [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
   
-  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
-
   For example:
 
   `pyenv install 3.11.9`
-
-  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
-
-  `pyenv local mongo-project-workshop-3.11.9`
 
 </aside> 
 
@@ -31,10 +22,19 @@
   
 <aside>
 
-  HINT: we recommend to use PDM - Python package and dependency manager [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
-
+  HINT: we recommend to use pyenv virtualenv  with PDM - Python package and dependency manager 
+  
+  [https://github.com/pyenv/pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
+  
+  [https://pdm-project.org/latest/](https://pdm-project.org/latest/)
+  
   <details>
-  <summary>how to use pdm</summary>
+  <summary>how to use pyenv virtualenv  & pdm</summary>
+
+  `pyenv virtualenv 3.11.9 mongo-project-workshop-3.11.9`
+
+  `pyenv local mongo-project-workshop-3.11.9`
+
 
   install pdm 
 
@@ -52,6 +52,8 @@
 
   </details>
 </aside>
+
+
 
  you can use old good `venv` [https://docs.python.org/3/library/venv.html](https://docs.python.org/3/library/venv.html)
  
@@ -94,5 +96,5 @@
 * Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
    in windows [link for tutorial](https://www.youtube.com/watch?v=PXqcHi2fkXI)
-   
+
 ### That’s it! You’re ready to work! 🎉

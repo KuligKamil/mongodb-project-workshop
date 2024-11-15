@@ -83,7 +83,10 @@ We found 4 potential candidates to use them.
 
 
 
-For enter easier in MongoDB world & hype about tool we decide to use Beanie.
+
+For enter easier in MongoDB world & hype about tool we decide to use **Beanie**.
+
+
 
 **Beanie ODM** - object-document mapper for MongoDB. Data models are based on Pydantic. 
 
