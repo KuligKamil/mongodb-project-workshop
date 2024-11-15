@@ -90,16 +90,9 @@
 
 5. Create file with environment variables `.envrc` file or `.env` file
 
-<aside>
-💡We recommend to use `direnv`  https://direnv.net/
-
-* Load [12factor apps](https://12factor.net/) environment variables
-* Create per-project isolated development environments
-* Load secrets for deployment
-</aside>
-
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
 * Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
    in windows [link for tutorial](https://www.youtube.com/watch?v=PXqcHi2fkXI)
+   
 ### That’s it! You’re ready to work! 🎉

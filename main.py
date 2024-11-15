@@ -1,6 +1,8 @@
-from src.database_connection import database_init
 from asyncio import run
+
 from beanie import Document
+
+from src.database_connection import database_init
 
 
 class User(Document):

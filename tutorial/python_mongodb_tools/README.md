@@ -28,8 +28,10 @@ To find the ideal Python tool for MongoDB, we focused on specific criteria: seam
 
 [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
+![Alt text](assets/fastapi-popularity.png)
 
 ### Use **asynchronouse option** with FastAPI
+
  For better performance & scalability. 
  
  But remember when you need to use async framework...
@@ -57,11 +59,7 @@ We found 4 potential candidates to use them.
 ![star history](assets/star-history.png)
 
 
-**PyMongo** and **MongoEngine** out - no asynchronous support.
-**Motor** and **Beanie** are Python drivers support asynchronous. 
-
-
-**driver vs ODM**
+### **driver vs ODM**
 **Driver** give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
 
@@ -73,6 +71,7 @@ We found 4 potential candidates to use them.
 | **Schema Enforcement** | None, or manual                   | Schema defined in code             |
 | **Best For**           | Performance, fine-grained control | Rapid development, maintainability |
 
+### Summary Comparison
 
 | tool | type  | support Pydantic | support async |
 | ------------ |   :---:    |   :---:    |   :---:    |
@@ -105,3 +104,4 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 
 * Link for generate star history graph [[Star History Chart](https://api.star-history.com/svg?repos=BeanieODM/beanie,mongodb/mongo-python-driver,mongodb/motor,MongoEngine/mongoengine&type=Date)](https://star-history.com/#BeanieODM/beanie&mongodb/mongo-python-driver&mongodb/motor&MongoEngine/mongoengine&Date) 
+

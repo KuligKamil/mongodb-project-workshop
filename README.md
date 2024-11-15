@@ -130,8 +130,10 @@ To find the ideal Python tool for MongoDB, we focused on specific criteria: seam
 
 [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 
+![Alt text](assets/fastapi-popularity.png)
 
 ### Use **asynchronouse option** with FastAPI
+
  For better performance & scalability. 
  
  But remember when you need to use async framework...
@@ -159,11 +161,7 @@ We found 4 potential candidates to use them.
 ![star history](assets/star-history.png)
 
 
-**PyMongo** and **MongoEngine** out - no asynchronous support.
-**Motor** and **Beanie** are Python drivers support asynchronous. 
-
-
-**driver vs ODM**
+### **driver vs ODM**
 **Driver** give basic connection & basic options.
 **Document-Object Mapper** (think ORM Object–Relational Mapping, but for document databases).
 
@@ -175,6 +173,7 @@ We found 4 potential candidates to use them.
 | **Schema Enforcement** | None, or manual                   | Schema defined in code             |
 | **Best For**           | Performance, fine-grained control | Rapid development, maintainability |
 
+### Summary Comparison
 
 | tool | type  | support Pydantic | support async |
 | ------------ |   :---:    |   :---:    |   :---:    |
@@ -207,6 +206,7 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 
 * Link for generate star history graph [[Star History Chart](https://api.star-history.com/svg?repos=BeanieODM/beanie,mongodb/mongo-python-driver,mongodb/motor,MongoEngine/mongoengine&type=Date)](https://star-history.com/#BeanieODM/beanie&mongodb/mongo-python-driver&mongodb/motor&MongoEngine/mongoengine&Date) 
+
 
 
 ## Project Setup
@@ -301,18 +301,11 @@ Beanie wraps Motor, Motor wraps PyMongo. The most popular python drivers.
 
 5. Create file with environment variables `.envrc` file or `.env` file
 
-<aside>
-💡We recommend to use `direnv`  https://direnv.net/
-
-* Load [12factor apps](https://12factor.net/) environment variables
-* Create per-project isolated development environments
-* Load secrets for deployment
-</aside>
-
 * Set the `MONGODB_URI` variable in `.envrc` to for your database connection (It will be shown in the next step, how to get the variables)
 * Set the `PYTHONPATH` variable in `.envrc` to your project path
    in mac, linux & WSL `export PYTHONPATH=$PWD`
    in windows [link for tutorial](https://www.youtube.com/watch?v=PXqcHi2fkXI)
+   
 ### That’s it! You’re ready to work! 🎉
 
 
