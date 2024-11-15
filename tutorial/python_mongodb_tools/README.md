@@ -8,18 +8,26 @@ To find the ideal Python tool for MongoDB, we focused on specific criteria: seam
 
 **Pydantic: Powerful Data Validation Made Easy**
 
-* Define Data Models with Type Hints: Simplifies data structure definitions.
-* Automatic Validation: Ensures data matches specified types and converts compatible types.
-* Clear Error Messages: Highlights issues when data doesn’t fit the model.
+* Powered by type hints — with Pydantic, schema validation and serialization are controlled by type annotations; less to learn, less code to write, and integration with your IDE and static analysis tools.
+* Speed — Pydantic's core validation logic is written in Rust. As a result, Pydantic is among the fastest data validation libraries for Python.
+* JSON Schema — Pydantic models can emit JSON Schema, allowing for easy integration with other tools. 
+  
 [https://docs.pydantic.dev/latest/](https://docs.pydantic.dev/latest/)
 
 
-**FastAPI: Modern, Fast Web Framework for APIs**
+**FastAPI: Modern, Fast Web Framework for building APIs**
 
-- **High Performance**: Built on ASGI, optimized for speed and scalability.
-- **Automatic Validation**: Pydantic-based data validation ensures data integrity with minimal code.
-- **Interactive Documentation**: Generates Swagger and ReDoc docs automatically for easy testing and exploration.
-- **Developer-Friendly**: Simple syntax with type hints, async support, and dependency injection, ideal for rapid development.
+* Fast: Very high performance, on par with NodeJS and Go (thanks to Starlette and Pydantic).
+* Fast to code: Increase the speed to develop features.
+* Intuitive: Great editor support. Completion everywhere. Less time debugging.
+* Easy: Designed to be easy to use and learn. Less time reading docs.
+* Short: Minimize code duplication. Multiple features from each parameter declaration. Fewer bugs.
+* Robust: Get production-ready code. With automatic interactive documentation.
+* Standards-based: Based on (and fully compatible with) the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
+  
+
+[https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
+
 
 ### Use **asynchronouse option** with FastAPI
  For better performance & scalability. 
